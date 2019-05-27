@@ -8,7 +8,7 @@ import debugLib from 'debug';
 import http from 'http';
 import app from '../app';
 
-const debug = debugLib('your-project-name:server');
+const debug = debugLib('meetingflow:server');
 
 /**
  * Get port from environment and store in Express.
@@ -38,8 +38,9 @@ server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
+ * @param {String} val
+ * @return {*}
  */
-
 function normalizePort(val) {
   // eslint-disable-next-line no-shadow
   const port = parseInt(val, 10);
@@ -59,9 +60,10 @@ function normalizePort(val) {
 }
 
 /**
- * Event listener for HTTP server "error" event.
+ * Function that triggers on error
+ * @param {*} error
+ * @return {void}
  */
-
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -87,9 +89,9 @@ function onError(error) {
 }
 
 /**
- * Event listener for HTTP server "listening" event.
+ * Runs the web server
+ * @return {void}
  */
-
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
