@@ -12,6 +12,8 @@ import logger from 'morgan';
 
 const app = express();
 
+require('dotenv').config();
+
 /**
  * All the configuration of the visual elements such as:
  * - Templating main directory (views)
