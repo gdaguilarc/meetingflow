@@ -10,8 +10,6 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 // import favicon from 'serve-favicon';  // Uncomment when favicon exist in public
 
-import indexRouter from './routes/index';
-
 const app = express();
 
 /**
