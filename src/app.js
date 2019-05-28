@@ -10,9 +10,12 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 // import favicon from 'serve-favicon';  // Uncomment when favicon exist in public
 
+import indexRoutes from './routes/index';
+
 const app = express();
 
 require('dotenv').config();
+require('./database/connection');
 
 /**
  * All the configuration of the visual elements such as:
@@ -43,6 +46,7 @@ app.use(cookieParser());
  * - Authentication routes
  * - Reservation routes
  */
-app.use(require('./routes'));
+
+app.use(indexRoutes);
 
 export default app;
