@@ -8,12 +8,15 @@ import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import hbs from 'express-handlebars';
 // import favicon from 'serve-favicon';  // Uncomment when favicon exist in public
 
 import indexRoutes from './routes/index';
 
+/**
+ * Express main services init
+ */
 const app = express();
-
 require('dotenv').config();
 require('./database/connection');
 
@@ -26,7 +29,16 @@ require('./database/connection');
  */
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.set('view engine', 'ejs');
+app.set('view engine', 'hbs');
+app.engine(
+  'hbs',
+  hbs({
+    extname: 'hbs',
+    defaultView: 'default',
+    layoutsDir: __dirname + '/views/layouts/',
+    partialsDir: __dirname + '/views/partials/'
+  })
+);
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));  // this currently dosen't exist!!!
 
 /**
