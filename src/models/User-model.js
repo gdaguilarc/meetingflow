@@ -9,7 +9,9 @@ const userSchema = new Schema({
   password: String,
   phone: String,
   position: String,
-  office: String
+  office: String,
+  authority: { type: String, default: 'Basic' },
+  isActivated: { type: Boolean, default: false }
 });
 
 // Method to encrypt the password applying 10 times the hashing algorithm

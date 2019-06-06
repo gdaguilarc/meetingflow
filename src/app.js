@@ -9,6 +9,8 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import hbs from 'express-handlebars';
+import session from 'express-session';
+import passport from 'passport';
 // import favicon from 'serve-favicon';  // Uncomment when favicon exist in public
 
 import indexRoutes from './routes/index';
@@ -50,6 +52,17 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+/**
+ * Configuration of the express session
+ */
+app.use(session({ secret: process.env.SESSION_KEY }));
+
+/**
+ * Configuration of passport session
+ */
+app.use(passport.initialize());
+app.use(passport.session());
 
 /**
  * Import of all the routes in the application
