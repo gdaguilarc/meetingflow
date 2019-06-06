@@ -7,9 +7,10 @@
  */
 
 import express from 'express';
+import guestRoutes from './guest';
 
 const router = express.Router();
 
-router.get('/', (req, res) => res.render('home', { layout: 'default', template: 'home-template' }));
+router.use('/', guestRoutes);
 
 export default router;
