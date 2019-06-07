@@ -7,9 +7,12 @@
  */
 
 import express from 'express';
+import guestRoutes from './guest';
+import userRoutes from './user';
 
 const router = express.Router();
 
-router.get('/', (req, res) => res.render('index'));
+router.use('/', guestRoutes);
+router.use('/', userRoutes);
 
 export default router;

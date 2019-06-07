@@ -4,6 +4,8 @@ A Web application for schedule meetings and register visitors data in an organiz
 
 ## Motivation
 
+To solve the problem of the registration and room management.
+
 ## Built With
 
 - [Express](https://github.com/expressjs/express) - The web framework used

@@ -1,0 +1,65 @@
+<div class="col-md-8 order-md-1">
+  <form method="POST" action="/signup">
+    <div class="mb-3">
+      <label for="name">Nombre Completo</label>
+      <input type="text" class="form-control" id="name" placeholder="Alfredo Pérez" name="name" required>
+      <div class="invalid-feedback">
+        Please enter a name
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="email">Correo Electronico</label>
+      <input type="email" class="form-control" id="email" placeholder="name@organizations.com" name="email" required>
+      <div class="invalid-feedback">
+        Please enter a valid email
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password">Contraseña</label>
+      <input type="password" class="form-control" id="password" onkeyup='check();' placeholder="****" name="password"
+        required>
+      <div class="invalid-feedback">
+        Please enter a valid password
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password">Confirmar Contraseña</label>
+      <input type="password" class="form-control" id="confirm_password" onkeyup='check();' placeholder="****" required>
+      <div class="invalid-feedback">
+        Please enter a valid password
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="position">Posición en la empresa</label>
+      <input type="position" class="form-control" id="position" placeholder="Desarrollador" name="position" required>
+      <div class="invalid-feedback">
+        Please enter a valid position
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="office">Oficina</label>
+      <input type="text" class="form-control" id="office" placeholder="Ejercito Nacional  " required>
+      <div class="invalid-feedback">
+        Please enter a valid phone
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="phone">Teléfono</label>
+      <input type="text" class="form-control" id="phone" placeholder="55 17 81 29 55" name="phone" required>
+      <div class="invalid-feedback">
+        Please enter a valid phone
+      </div>
+    </div>
+    <div class="mb-3">
+      <div>
+        <div class="alert alert-dismissible alert-light">
+          <strong>
+            <span id='message'></span>
+          </strong>
+        </div>
+      </div>
+    </div>
+    <hr class="mb-4">
+    <button id="register-button" class="btn btn-secondary btn-lg btn-info" type="submit">Registrar Usuario</button>
+  </form>
+</div>

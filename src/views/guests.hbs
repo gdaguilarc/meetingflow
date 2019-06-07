@@ -1,0 +1,55 @@
+<div class="col-md-8 order-md-1">
+  <h4 class="mb-3">Guest Registration</h4>
+  <form class="needs-validation" novalidate="">
+
+    <div class="mb-3">
+      <label for="name">Nombre </label>
+      <input type="text" class="form-control" id="name" placeholder="Alfredo Pérez">
+      <div class="invalid-feedback">
+        Please enter a name
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="phone">Phone </label>
+      <input type="text" class="form-control" id="phone" placeholder="+52 1 5575858523">
+      <div class="invalid-feedback">
+        Please enter a valid phone number
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email">Email </label>
+      <input type="email" class="form-control" id="email" placeholder="you@example.com">
+      <div class="invalid-feedback">
+        Please enter a valid email address for shipping updates.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="organization">Organization </label>
+      <input type="text" class="form-control" id="organization" placeholder="Google Inc.">
+      <div class="invalid-feedback">
+        Please enter a valid email address for shipping updates.
+      </div>
+    </div>
+
+
+    <div class="mb-3">
+      <label for="host">¿A quién visita?</label>
+      <select class="custom-select d-block w-100" id="host" required="">
+        <option value="">Choose...</option>
+        <option>Pablo Colás</option>
+        <option>Luis Hugo Luna</option>
+      </select>
+      <div class="invalid-feedback">
+        Please select a valid host.
+      </div>
+    </div>
+
+
+    <hr class="mb-4">
+
+    <button class="btn btn-outline-secondary btn-lg btn-block" type="submit">Register Visit</button>
+  </form>
+</div>
