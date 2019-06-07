@@ -1,9 +1,11 @@
 import passport from 'passport';
-import { Strategy } from 'passport-local';
+import local from 'passport-local';
 import { isEmail } from 'validator';
 import phone from 'phone';
 
 import User from '../models/User-model';
+
+const LocalStrategy = local.Strategy;
 
 /**
  * Serialize the user for the session
@@ -21,15 +23,17 @@ passport.deserializeUser(async (id, done) => {
 
 passport.use(
   'local-signup',
-  new Strategy(
+  new LocalStrategy(
     {
-      emailField: 'email',
+      usernameField: 'email',
       passwordField: 'password',
       passReqToCallback: true
     },
     async (req, email, password, done) => {
       // Validate that the user don't exist
-      const user = await User.findOne({ username: username });
+
+      const user = await User.findOne({ email: email });
+      console.log(req.body);
 
       if (user) {
         return done(null, false, req.flash('signupMessage', 'El usuario existe'));
@@ -42,10 +46,14 @@ passport.use(
         if (isEmail(email)) {
           newUser.email = email;
         } else {
+          console.log('No Valid email');
           return done(null, false, req.flash('signupMessage', 'This is not a valid email'));
         }
 
         newUser.password = newUser.encryptPassword(password);
+        console.log(formatPhone(req.body.phone));
+
+        // TODO:  Handle invalid phone
         newUser.phone = formatPhone(req.body.phone);
         newUser.position = req.body.position;
         newUser.office = req.body.office;

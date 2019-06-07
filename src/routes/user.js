@@ -12,9 +12,9 @@ router.get('/post', (req, res) => {
 });
 
 router.post(
-  '/newuser',
+  '/signup',
   passport.authenticate('local-signup', {
-    successRedirect: '/post',
+    successRedirect: '/',
     failureRedirect: '/signup',
     passReqToCallback: true
   })
