@@ -90,6 +90,10 @@ passport.use(
         return done(null, false, req.flash('signinMessage', 'Wrong password'));
       }
 
+      if (!user.isActivated) {
+        return done(null, false, req.flash('signinMessage', 'No authorized user'));
+      }
+
       return done(null, user);
     }
   )
