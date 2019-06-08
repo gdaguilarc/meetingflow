@@ -91,7 +91,14 @@ passport.use(
       }
 
       if (!user.isActivated) {
-        return done(null, false, req.flash('signinMessage', 'No authorized user'));
+        return done(
+          null,
+          false,
+          req.flash(
+            'signinMessage',
+            'Unauthorized user, please get in contact with an administrator'
+          )
+        );
       }
 
       return done(null, user);
