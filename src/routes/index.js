@@ -9,10 +9,12 @@
 import express from 'express';
 import guestRoutes from './guest';
 import userRoutes from './user';
+import adminRoutes from './admin';
 
 const router = express.Router();
 
 router.use('/', guestRoutes);
 router.use('/', userRoutes);
+router.use('/admin', adminRoutes);
 
 export default router;

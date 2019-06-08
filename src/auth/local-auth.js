@@ -32,15 +32,13 @@ passport.use(
     async (req, email, password, done) => {
       // Validate that the user don't exist
 
-      const user = await User.findOne({ email: email });
-      console.log(req.body);
+      const user = await User.findOne({ email });
 
       if (user) {
-        return done(null, false, req.flash('signupMessage', 'El usuario existe'));
+        return done(null, false, req.flash('signupMessage', 'The user is unavailable'));
       } else {
         const newUser = new User();
 
-        // Get values from the form
         newUser.name = req.body.name;
 
         if (isEmail(email)) {
@@ -50,11 +48,18 @@ passport.use(
           return done(null, false, req.flash('signupMessage', 'This is not a valid email'));
         }
 
+        // TODO: Valid Password
         newUser.password = newUser.encryptPassword(password);
-        console.log(formatPhone(req.body.phone));
 
-        // TODO:  Handle invalid phone
-        newUser.phone = formatPhone(req.body.phone);
+        const formatedPhone = formatPhone(req.body.phone);
+
+        console.log(formatedPhone);
+        if (formatedPhone !== undefined) {
+          newUser.phone = formatedPhone;
+        } else {
+          return done(null, false, req.flash('signupMessage', 'This is not a valid phone number'));
+        }
+
         newUser.position = req.body.position;
         newUser.office = req.body.office;
 
@@ -70,12 +75,12 @@ passport.use(
 //   'local-signin',
 //   new Strategy() // <----- TODO: Local Sign In
 //   // {
-//   //   usernameField: 'username',
+//   //   usernameField: 'email',
 //   //   passwordField: 'password',
 //   //   passReqToCallback: true
 //   // },
 //   // async (req, username, password, done) => {
-//   //   const user = await User.findOne({ username: username });
+//   //   const user = await User.findOne({ email });
 
 //   //   if (!user) {
 //   //     return done(null, false, req.flash('signinMessage', 'Usuario no encontrado'));

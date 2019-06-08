@@ -1,6 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 
+// eslint-disable-next-line new-cap
 const router = express.Router();
 
 router.get('/signup', (req, res) => {
@@ -14,7 +15,7 @@ router.get('/post', (req, res) => {
 router.post(
   '/signup',
   passport.authenticate('local-signup', {
-    successRedirect: '/',
+    successRedirect: '/post',
     failureRedirect: '/signup',
     passReqToCallback: true
   })
