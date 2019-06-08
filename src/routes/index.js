@@ -11,6 +11,7 @@ import guestRoutes from './guest';
 import userRoutes from './user';
 import adminRoutes from './admin';
 
+// eslint-disable-next-line new-cap
 const router = express.Router();
 
 router.use('/', guestRoutes);
