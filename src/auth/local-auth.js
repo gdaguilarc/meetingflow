@@ -32,7 +32,7 @@ passport.use(
     async (req, email, password, done) => {
       // Validate that the user don't exist
 
-      const user = await User.findOne({ email: email });
+      const user = await User.findOne({ email });
       console.log(req.body);
 
       if (user) {
@@ -66,28 +66,29 @@ passport.use(
   )
 );
 
-// passport.use(
-//   'local-signin',
-//   new Strategy() // <----- TODO: Local Sign In
-//   // {
-//   //   usernameField: 'username',
-//   //   passwordField: 'password',
-//   //   passReqToCallback: true
-//   // },
-//   // async (req, username, password, done) => {
-//   //   const user = await User.findOne({ username: username });
+passport.use(
+  'local-signin',
+  new LocalStrategy( // <----- TODO: Local Sign In
+    {
+      usernameField: 'email',
+      passwordField: 'password',
+      passReqToCallback: true
+    },
+    async (req, email, password, done) => {
+      const user = await User.findOne({ email });
 
-//   //   if (!user) {
-//   //     return done(null, false, req.flash('signinMessage', 'Usuario no encontrado'));
-//   //   }
+      if (!user) {
+        return done(null, false, req.flash('signinMessage', 'User not found'));
+      }
 
-//   //   if (!user.validatePassword(password)) {
-//   //     return done(null, false, req.flash('signinMessage', 'Credenciales Incorrectas'));
-//   //   }
+      if (!user.validatePassword(password)) {
+        return done(null, false, req.flash('signinMessage', 'Wrong password'));
+      }
 
-//   //   return done(null, user);
-//   // }
-// );
+      return done(null, user);
+    }
+  )
+);
 
 /**
  *  Formats the phone number using
