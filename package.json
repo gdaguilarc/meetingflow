@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/gdaguilarc/meetingflow#readme",
   "dependencies": {
+    "@sendgrid/mail": "^6.4.0",
     "async": "^3.0.1",
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
