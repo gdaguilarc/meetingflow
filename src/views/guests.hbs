@@ -1,10 +1,12 @@
 <div class="col-md-8 order-md-1">
-  <h4 class="mb-3">Guest Registration</h4>
-  <form class="needs-validation" novalidate="">
+  <form method="POST" action="/register-guest">
+
+    <h4 class="mb-3">Guest Registration</h4>
+
 
     <div class="mb-3">
       <label for="name">Nombre </label>
-      <input type="text" class="form-control" id="name" placeholder="Alfredo Pérez">
+      <input type="text" class="form-control" id="name" name="name" placeholder="Alfredo Pérez">
       <div class="invalid-feedback">
         Please enter a name
       </div>
@@ -12,7 +14,7 @@
 
     <div class="mb-3">
       <label for="phone">Phone </label>
-      <input type="text" class="form-control" id="phone" placeholder="+52 1 5575858523">
+      <input type="text" class="form-control" id="phone" name="phone" placeholder="+52 1 5575858523">
       <div class="invalid-feedback">
         Please enter a valid phone number
       </div>
@@ -20,7 +22,7 @@
 
     <div class="mb-3">
       <label for="email">Email </label>
-      <input type="email" class="form-control" id="email" placeholder="you@example.com">
+      <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
       <div class="invalid-feedback">
         Please enter a valid email address for shipping updates.
       </div>
@@ -28,7 +30,7 @@
 
     <div class="mb-3">
       <label for="organization">Organization </label>
-      <input type="text" class="form-control" id="organization" placeholder="Google Inc.">
+      <input type="text" class="form-control" id="organization" name="organization" placeholder="Google Inc.">
       <div class="invalid-feedback">
         Please enter a valid email address for shipping updates.
       </div>
@@ -37,7 +39,8 @@
 
     <div class="mb-3">
       <label for="host">¿A quién visita?</label>
-      <select class="custom-select d-block w-100" id="host" required="">
+      <select class="custom-select d-block w-100" id="host" name="host" data-placeholder="Pick your choice"
+        data-tabindex="1" required>
         <option value="">Choose...</option>
         <option>Pablo Colás</option>
         <option>Luis Hugo Luna</option>
@@ -47,9 +50,20 @@
       </div>
     </div>
 
+    <div class="mb-3">
+      <div>
+        <div class="alert alert-dismissible alert-light">
+          <strong>
+            <span id='message'>{{ guestRegisterMessage }}</span>
+          </strong>
+        </div>
+      </div>
+    </div>
+
 
     <hr class="mb-4">
 
     <button class="btn btn-outline-secondary btn-lg btn-block" type="submit">Register Visit</button>
   </form>
+
 </div>
