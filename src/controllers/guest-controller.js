@@ -32,7 +32,7 @@ async function newGuest(req, res) {
 }
 
 /**
- * Checks if the request has the specified data
+ * Checks if the request is correct
  * @param {*} req
  * @return {Boolean}
  */
