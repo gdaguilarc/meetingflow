@@ -2,6 +2,7 @@ import passport from 'passport';
 import local from 'passport-local';
 import { isEmail } from 'validator';
 import phone from 'phone';
+import { accountWelcome } from '../controllers/user-controller';
 
 import User from '../models/User-model';
 
@@ -63,6 +64,7 @@ passport.use(
         newUser.office = req.body.office;
 
         await newUser.save();
+        accountWelcome(req.body.email);
 
         done(null, newUser);
       }
