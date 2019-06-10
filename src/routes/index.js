@@ -10,6 +10,7 @@ import express from 'express';
 import guestRoutes from './guest';
 import userRoutes from './user';
 import adminRoutes from './admin';
+import firstTimeRoutes from './first-time';
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
@@ -17,5 +18,6 @@ const router = express.Router();
 router.use('/', guestRoutes);
 router.use('/', userRoutes);
 router.use('/admin', adminRoutes);
+router.use('/setup', firstTimeRoutes);
 
 export default router;
