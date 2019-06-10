@@ -48,12 +48,11 @@ passport.use(
           return done(null, false, req.flash('signupMessage', 'This is not a valid email'));
         }
 
-        // TODO: Valid Password
+        // TODO: Validate Password
         newUser.password = newUser.encryptPassword(password);
 
         const formatedPhone = formatPhone(req.body.phone);
 
-        console.log(formatedPhone);
         if (formatedPhone !== undefined) {
           newUser.phone = formatedPhone;
         } else {
