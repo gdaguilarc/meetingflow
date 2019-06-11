@@ -2,8 +2,7 @@ import passport from 'passport';
 import local from 'passport-local';
 import { isEmail } from 'validator';
 import phone from 'phone';
-import { accountWelcome } from '../controllers/user-controller';
-
+import { sendMail } from '../controllers/mail-sender';
 import User from '../models/User-model';
 
 const LocalStrategy = local.Strategy;
@@ -64,7 +63,8 @@ passport.use(
         newUser.office = req.body.office;
 
         await newUser.save();
-        accountWelcome(req.body.email);
+        // TODO: Finish the sender
+        sendMail(req.body.email);
 
         done(null, newUser);
       }
