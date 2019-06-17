@@ -5,7 +5,7 @@ import passport from 'passport';
 const router = express.Router();
 
 router.get('/signup', (req, res) => {
-  res.render('signup', { layout: 'default', template: 'guess-template' });
+  res.render('signup', { layout: 'default', template: 'guess-template', method: '/signup' });
 });
 
 router.get('/signin', (req, res) => {

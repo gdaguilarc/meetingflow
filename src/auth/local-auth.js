@@ -4,6 +4,7 @@ import { isEmail } from 'validator';
 import phone from 'phone';
 import { sendMail } from '../controllers/mail-sender';
 import User from '../models/User-model';
+import App from '../models/Application-model';
 
 const LocalStrategy = local.Strategy;
 
@@ -29,45 +30,22 @@ passport.use(
       passwordField: 'password',
       passReqToCallback: true
     },
-    async (req, email, password, done) => {
-      // Validate that the user don't exist
+    (req, email, password, done) => {
+      signUp(req, email, password, done, 'normal');
+    }
+  )
+);
 
-      const user = await User.findOne({ email });
-
-      if (user) {
-        return done(null, false, req.flash('signupMessage', 'The user is unavailable'));
-      } else {
-        const newUser = new User();
-
-        newUser.name = req.body.name;
-
-        if (isEmail(email)) {
-          newUser.email = email;
-        } else {
-          console.log('No Valid email');
-          return done(null, false, req.flash('signupMessage', 'This is not a valid email'));
-        }
-
-        // TODO: Validate Password
-        newUser.password = newUser.encryptPassword(password);
-
-        const formatedPhone = formatPhone(req.body.phone);
-
-        if (formatedPhone !== undefined) {
-          newUser.phone = formatedPhone;
-        } else {
-          return done(null, false, req.flash('signupMessage', 'This is not a valid phone number'));
-        }
-
-        newUser.position = req.body.position;
-        newUser.office = req.body.office;
-
-        await newUser.save();
-        // TODO: Finish the sender
-        sendMail(req.body.email);
-
-        done(null, newUser);
-      }
+passport.use(
+  'local-organizationAdmin',
+  new LocalStrategy(
+    {
+      usernameField: 'email',
+      passwordField: 'password',
+      passReqToCallback: true
+    },
+    (req, email, password, done) => {
+      signUp(req, email, password, done, 'organizationAdmin');
     }
   )
 );
@@ -116,4 +94,64 @@ passport.use(
  */
 function formatPhone(number, regionCode = 'MX') {
   return phone(number, regionCode)[0];
+}
+
+/**
+ *
+ * @param {*} req
+ * @param {*} email
+ * @param {*} password
+ * @param {*} done
+ * @param {*} authority
+ */
+async function signUp(req, email, password, done, authority) {
+  // Validate that the user don't exist
+
+  const user = await User.findOne({ email });
+
+  if (user) {
+    return done(null, false, req.flash('signupMessage', 'The user is unavailable'));
+  } else {
+    const newUser = new User();
+
+    newUser.name = req.body.name;
+
+    if (isEmail(email)) {
+      newUser.email = email;
+    } else {
+      console.log(email);
+      return done(null, false, req.flash('signupMessage', 'This is not a valid email'));
+    }
+
+    // TODO: Validate Password
+    newUser.password = newUser.encryptPassword(password);
+
+    const formatedPhone = formatPhone(req.body.phone);
+
+    if (formatedPhone !== undefined) {
+      newUser.phone = formatedPhone;
+    } else {
+      return done(null, false, req.flash('signupMessage', 'This is not a valid phone number'));
+    }
+
+    newUser.position = req.body.position;
+    newUser.office = req.body.office;
+
+    if (authority === 'organizationAdmin') {
+      newUser.authority = 'Admin';
+      newUser.isActivated = true;
+      await newUser.save();
+
+      // Update application
+      const { _id } = await User.findOne({ authority: 'Admin', isActivated: true });
+      await App.findOneAndUpdate({}, { organizationAdmin: _id });
+    } else {
+      await newUser.save();
+    }
+
+    // TODO: Finish the sender
+    sendMail(req.body.email);
+
+    done(null, newUser);
+  }
 }
