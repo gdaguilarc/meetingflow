@@ -4,6 +4,7 @@ import { isEmail } from 'validator';
 import phone from 'phone';
 import { sendMail } from '../controllers/mail-sender';
 import User from '../models/User-model';
+import { welcomeUser } from '../misc/mails/mail-templates';
 
 const LocalStrategy = local.Strategy;
 
@@ -63,8 +64,13 @@ passport.use(
         newUser.office = req.body.office;
 
         await newUser.save();
-        // TODO: Finish the sender
-        sendMail(req.body.email);
+
+        sendMail(
+          req.body.email,
+          'Registration',
+          'Welcome to meetingflow',
+          welcomeUser(req.body.name)
+        );
 
         done(null, newUser);
       }
