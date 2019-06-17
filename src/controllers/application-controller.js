@@ -1,13 +1,12 @@
 import App from '../models/Application-model';
+import '../database/connection';
+
 /**
  * @return { Boolean }
  */
 async function isSetup() {
-  const query = await App.findOne().select('firstTimeSetup');
-  return query.exec(function(err, app) {
-    if (err) return handleError(err);
-    return app.firstTimeSetup;
-  });
+  const { firstTimeSetup } = await App.findOne();
+  return firstTimeSetup;
 }
-console.log(isSetup());
+
 export { isSetup };
