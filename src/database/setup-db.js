@@ -20,7 +20,7 @@ export function setup() {
   mongoose.connection.db.listCollections({ name: 'users' }).next(async function(_err, collinfo) {
     if (!collinfo) {
       const user = new User();
-      user.name = 'Default';
+      user.name = 'No Host';
       user.email = 'default@company.com';
       user.password = '12345';
       user.phone = '000000000000';
