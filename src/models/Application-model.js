@@ -9,7 +9,8 @@ const applicationSchema = new Schema(
       default: false
     },
     organizationName: String,
-    organizationAdmin: { type: mongoose.Types.ObjectId },
+    organizationAdmin: { type: mongoose.Types.ObjectId, ref: 'user' },
+    designatedHost: { type: mongoose.Types.ObjectId, ref: 'user' },
     setupTime: { type: Date, default: Date.now() }
   },
   {

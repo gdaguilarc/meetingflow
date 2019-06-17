@@ -16,7 +16,13 @@ function sendMail(destination, subject, text, template) {
     text: text,
     html: template
   };
-  sgmail.send(msg);
+
+  sgmail.send(msg, (error, result) => {
+    if (error) {
+      console.log(error.response.body.errors);
+    } else {
+    }
+  });
 }
 
 export { sendMail };

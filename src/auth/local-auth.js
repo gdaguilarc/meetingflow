@@ -5,6 +5,7 @@ import phone from 'phone';
 import { sendMail } from '../controllers/mail-sender';
 import User from '../models/User-model';
 import App from '../models/Application-model';
+import { welcomeUser } from '../misc/mails/mail-templates';
 
 const LocalStrategy = local.Strategy;
 
@@ -150,7 +151,7 @@ async function signUp(req, email, password, done, authority) {
     }
 
     // TODO: Finish the sender
-    sendMail(req.body.email);
+    sendMail(req.body.email, 'Registration', 'Welcome to meetingflow', welcomeUser(req.body.name));
 
     done(null, newUser);
   }
