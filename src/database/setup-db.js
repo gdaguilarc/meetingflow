@@ -20,9 +20,15 @@ export function setup() {
   mongoose.connection.db.listCollections({ name: 'users' }).next(async function(_err, collinfo) {
     if (!collinfo) {
       const user = new User();
-      app.organizationName = 'Company';
-      await app.save();
-      console.log('Creating Application Schema ------- Success!! ');
+      user.name = 'Default';
+      user.email = 'default@company.com';
+      user.password = '12345';
+      user.phone = '000000000000';
+      user.position = 'default';
+      user.office = 'default';
+      user.isActivated = true;
+      await user.save();
+      console.log('Creating User Schema ------- Success!! ');
     }
   });
 }
