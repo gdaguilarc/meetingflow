@@ -4,7 +4,8 @@
  * @return {String}
  */
 function getFirstName(fullname) {
-  return fullname.split(' ')[0];
+  const nameSeparated = fullname.split(' ');
+  return nameSeparated[0];
 }
 
 export { getFirstName };
