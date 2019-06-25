@@ -6,13 +6,14 @@
 function welcomeUser(user) {
   return `
       <div>
-        <h1>Welcome ${user}</h1>
-        <h3>Welcome to meetingflow system</h3>
-        <h3>You can take advantage of this features</h3>
+        <h1>Bienvenido ${user}!!</h1>
+        <h3>Bienvenido al sistema "Meetingflow"</h3>
+        <h3>Ahora podras disfrutar de los siguientes beneficios:</h3>
 
         <ul>
-          <li>Create meetings</li>
-          <li>Register your guests</li>
+          <li>Aparata salas para tus juntas</li>
+          <li>Registra a tus invitados</li>
+          <li>Envia invitaciones</li>
         </ul>
       </div>
       `;
@@ -29,10 +30,10 @@ function welcomeUser(user) {
 function welcomeGuest(guest, company, host, room) {
   return `
       <div>
-        <h1>Welcome ${guest}</h1>
-        <h3>Welcome to ${company}, we are glad to have you here!</h3>
-        <h3>${host} is comming for you</h3>
-        <h3>YOur meeting is going to be in the room ${room}</h3>
+        <h1>Bienvenido ${guest}</h1>
+        <h3>Bienvenido a ${company}, estamos muy contentos por su visita!</h3>
+        <h3>${host} en un momento vendra por ti</h3>
+        <h3>Tu junta se llevara a cabo en la sala "${room}"</h3>
       </div>
 `;
 }
