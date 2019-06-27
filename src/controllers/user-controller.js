@@ -8,4 +8,11 @@ async function getActiveUsers() {
   return await User.find({ isActivated: true });
 }
 
-export { getActiveUsers };
+/**
+ * @return {Object []}
+ */
+async function getUsers() {
+  return await User.find({ position: { $ne: 'default' } });
+}
+
+export { getActiveUsers, getUsers };

@@ -298,6 +298,7 @@ body {
   align-items: center;
   height: 100vh;
   padding: 5%;
+  flex-direction: column;
 }
 
 .closeBody {
@@ -306,4 +307,8 @@ body {
 
 .openBody {
   margin-left: 200px;
+}
+
+.usr-cards {
+  align-items: flex-start;
 }

@@ -38,13 +38,8 @@
 
 
     <div class="mb-3">
-      <label for="host">¿A quién visita?</label>
-      <select class="custom-select d-block w-100" id="host" name="host" data-placeholder="Pick your choice"
-        data-tabindex="1" required>
-        <option value="">Choose...</option>
-        <option>Pablo Colás</option>
-        <option>Luis Hugo Luna</option>
-      </select>
+      <label for="host">Host </label>
+      {{> dropdown}}
       <div class="invalid-feedback">
         Please select a valid host.
       </div>
@@ -59,6 +54,8 @@
         </div>
       </div>
     </div>
+
+
 
 
     <hr class="mb-4">
