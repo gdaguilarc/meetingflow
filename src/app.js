@@ -13,6 +13,7 @@ import session from 'express-session';
 import passport from 'passport';
 import flash from 'connect-flash';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 // import favicon from 'serve-favicon';  // Uncomment when favicon exist in public
 
 import indexRoutes from './routes/index';
@@ -21,6 +22,8 @@ import indexRoutes from './routes/index';
  * Express main services init
  */
 const app = express();
+app.use(cors());
+
 require('dotenv').config();
 require('./database/connection');
 require('./auth/local-auth');

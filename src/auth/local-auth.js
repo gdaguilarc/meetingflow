@@ -63,21 +63,18 @@ passport.use(
       const user = await User.findOne({ email });
 
       if (!user) {
-        return done(null, false, req.flash('signinMessage', 'User not found'));
+        return done(null, false, req.flash('signinMessage', 'El usuario no existe'));
       }
 
       if (!user.validatePassword(password)) {
-        return done(null, false, req.flash('signinMessage', 'Wrong password'));
+        return done(null, false, req.flash('signinMessage', 'Contraseña equivocada'));
       }
 
       if (!user.isActivated) {
         return done(
           null,
           false,
-          req.flash(
-            'signinMessage',
-            'Unauthorized user, please get in contact with an administrator'
-          )
+          req.flash('signinMessage', 'Usuario no autorizado, favor de contactar a un administrador')
         );
       }
 
@@ -111,7 +108,7 @@ async function signUp(req, email, password, done, authority) {
   const user = await User.findOne({ email });
 
   if (user) {
-    return done(null, false, req.flash('signupMessage', 'The user is unavailable'));
+    return done(null, false, req.flash('signupMessage', 'El usuario no esta disponible'));
   } else {
     const newUser = new User();
 
@@ -121,7 +118,7 @@ async function signUp(req, email, password, done, authority) {
       newUser.email = email;
     } else {
       console.log(email);
-      return done(null, false, req.flash('signupMessage', 'This is not a valid email'));
+      return done(null, false, req.flash('signupMessage', 'El email no es valido'));
     }
 
     // TODO: Validate Password
@@ -132,7 +129,7 @@ async function signUp(req, email, password, done, authority) {
     if (formatedPhone !== undefined) {
       newUser.phone = formatedPhone;
     } else {
-      return done(null, false, req.flash('signupMessage', 'This is not a valid phone number'));
+      return done(null, false, req.flash('signupMessage', 'Este no es un numero valido'));
     }
 
     newUser.position = req.body.position;

@@ -2,6 +2,7 @@ import Guest from '../models/Guest-model';
 import { isEmail } from 'validator';
 import phone from 'phone';
 import User from '../models/User-model';
+import App from '../models/Application-model';
 import { welcomeGuest } from '../misc/mails/mail-templates';
 import { sendMail } from './mail-sender';
 import { getFirstName } from '../misc/tools/strings';
@@ -21,19 +22,20 @@ async function newGuest(req, res, next) {
     guest.organization = req.body.organization;
     guest.phone = formatPhone(req.body.phone);
 
-    const { organizationName } = await User.findOne({});
+    const { organizationName } = await App.findOne({});
 
     // TODO: Get the id not the name
-    guest.id = hostDesignator(req.body.host);
-
+    guest.host = req.body.host;
     await guest.save(req.body.host);
+
+    const host = await User.findOne({ _id: req.body.host });
 
     sendMail(
       req.body.email,
-      `Welcome ${organizationName}!`,
-      'Welcome',
+      `Bienvenido a ${organizationName}!`,
+      'Bienvenido',
       // TODO: Assignte a room
-      welcomeGuest(getFirstName(req.body.name), organizationName, guest.host, 'Maya')
+      welcomeGuest(getFirstName(req.body.name), organizationName, host.name, 'Maya')
     );
 
     next();
@@ -73,11 +75,5 @@ function isValidData(req) {
 function formatPhone(number, regionCode = 'MX') {
   return phone(number, regionCode)[0];
 }
-
-/**
- *  Designates the host of the guest
- * @param {String} host
- */
-function hostDesignator(host) {}
 
 export { newGuest };
