@@ -6,13 +6,14 @@ import { getUsers } from '../../controllers/user-controller';
 const router = express.Router();
 const accessAdmin = (req, res, next) => accessManager(req, res, next, 'Admin');
 
-router.get('/users', accessAdmin, async (req, res) => {
+router.get('/notifications', accessAdmin, async (req, res) => {
   const users = await getUsers();
   const halfWayThough = Math.floor(users.length / 2);
 
   const arrayFirstHalf = users.slice(0, halfWayThough);
   const arraySecondHalf = users.slice(halfWayThough, users.length);
 
+  console.log(req);
   res.render('users-administration', {
     layout: 'main',
     users_1: arrayFirstHalf,

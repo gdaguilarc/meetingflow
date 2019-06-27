@@ -19,6 +19,7 @@ const router = express.Router();
 router.use('/', guestRoutes);
 router.use('/', userRoutes);
 router.use('/', adminRoutes);
+
 router.use('/setup', firstTimeRoutes);
 
 export default router;
