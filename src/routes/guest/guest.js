@@ -1,6 +1,6 @@
 import express from 'express';
-import { newGuest } from '../controllers/guest-controller';
-import { getActiveUsers } from '../controllers/user-controller';
+import { newGuest } from '../../controllers/guest-controller';
+import { getActiveUsers } from '../../controllers/user-controller';
 
 // eslint-disable-next-line new-cap
 const router = express.Router();

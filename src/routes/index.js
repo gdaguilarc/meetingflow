@@ -7,17 +7,19 @@
  */
 
 import express from 'express';
-import guestRoutes from './guest';
-import userRoutes from './user';
+
+import userRoutes from './users';
 import adminRoutes from './admin';
-import firstTimeRoutes from './first-time';
+import guestRoutes from './guest';
+import firstTimeRoutes from './onBorading';
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
 router.use('/', guestRoutes);
 router.use('/', userRoutes);
-router.use('/admin', adminRoutes);
+router.use('/', adminRoutes);
+
 router.use('/setup', firstTimeRoutes);
 
 export default router;

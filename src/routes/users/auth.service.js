@@ -28,7 +28,7 @@ router.post(
 router.post(
   '/signin',
   passport.authenticate('local-signin', {
-    successRedirect: '/admin/users',
+    successRedirect: '/notifications',
     failureRedirect: '/signin',
     passReqToCallback: true
   })
