@@ -99,11 +99,11 @@ function formatPhone(number, regionCode = 'MX') {
 
 /**
  *
- * @param {*} req
- * @param {*} email
- * @param {*} password
- * @param {*} done
- * @param {*} authority
+ * @param { Object } req
+ * @param { String } email
+ * @param { String } password
+ * @param { Object } done
+ * @param { String } authority
  */
 async function signUp(req, email, password, done, authority) {
   // Validate that the user don't exist
