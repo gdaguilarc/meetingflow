@@ -1,6 +1,6 @@
 /* Container */
 .container-body {
-  padding: 6rem 3rem;
+  padding: 7rem 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,8 +178,8 @@ body {
   list-style-type: none;
 }
 
-.sidebar-nav .space-top {
-  margin-top: 25px;
+.sidebar-nav .space-down {
+  margin-bottom: 25px;
 }
 
 .sidebar-nav.bottom {
@@ -311,4 +311,10 @@ body {
 
 .usr-cards {
   align-items: flex-start;
+}
+
+/* TABLES */
+.display-table {
+  width: 100%;
+  height: 100%;
 }

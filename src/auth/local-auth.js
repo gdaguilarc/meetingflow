@@ -77,7 +77,6 @@ passport.use(
           req.flash('signinMessage', 'Usuario no autorizado, favor de contactar a un administrador')
         );
       }
-
       return done(null, user);
     }
   )

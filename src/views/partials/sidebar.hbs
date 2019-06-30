@@ -1,9 +1,9 @@
 <nav class="sidebar open">
     <div class="sidebar-content">
         <ul class="sidebar-nav">
-            <li class="top no-sub-list">
-                <a href="#" class="logo" aria-label="Thing App Home">
-                    <a href="#" class="logo" aria-label="Thing App Home">
+            <li class="top no-sub-list space-down">
+                <a href="/home" class="logo" aria-label="Thing App Home">
+                    <a href="/home" class="logo" aria-label="Thing App Home">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                             style="isolation:isolate" viewBox="56.975 59.75 143.551 180.5" width="24" height="24"
                             fill="currentColor">
@@ -18,19 +18,26 @@
                     <a href="javascript:toggleSidebar()" class="sidebar-toggle icon-only"
                         aria-label="Collapse navigation"><i data-feather="chevrons-left"></i></a>
             </li>
-            <li class="space-top active">
-                <a href="#" aria-label="users"><i data-feather="users"></i><span aria-hidden="true">Usuarios</span>
+
+            {{#if access }}
+            <li class="active">
+                <a href="/users" aria-label="users"><i data-feather="users"></i><span aria-hidden="true">Usuarios</span>
                 </a>
                 <ul>
-                    <li><a href="#">Solicitudes</a></li>
+                    <li><a href="/notifications">Solicitudes</a></li>
                     <li><a href="#">Permisos</a></li>
                 </ul>
             </li>
+            {{/if}}
+
             <li class="active">
-                <a href="#" aria-label="Content"><i data-feather="coffee"></i><span aria-hidden="true">Salas</span></a>
+                <a href="#" aria-label="rooms"><i data-feather="coffee"></i><span aria-hidden="true">Salas</span></a>
                 <ul>
                     <li><a href="#">Reservar</a></li>
+                    <li><a href="#">Historial</a></li>
+                    {{#if access }}
                     <li><a href="#">Crear</a></li>
+                    {{/if}}
                 </ul>
             </li>
             <li class="active">

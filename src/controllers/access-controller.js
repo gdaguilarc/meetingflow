@@ -18,8 +18,8 @@ function isLoggedIn(req, res, next) {
  * @return { Boolean }
  */
 function hasAccess(req, res, authority) {
-  if (req.user.authority !== authority) {
-    return false;
+  if (authority === 'Admin') {
+    if (req.user.authority !== authority) return false;
   }
   return true;
 }

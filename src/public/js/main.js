@@ -5,13 +5,11 @@
  */
 function check() {
   if (validPasswords()) {
-    document.getElementById('message').style.color = 'green';
-    document.getElementById('message').innerHTML = 'Las contraseñas coinciden &#10004';
-    document.getElementById('register-button').disabled = false;
+    document.getElementById('confirm_password').classList.add('is-valid');
+    document.getElementById('confirm_password').classList.remove('is-invalid');
   } else {
-    document.getElementById('message').style.color = 'red';
-    document.getElementById('message').innerHTML = 'Las contraseñas no coinciden &#10006';
-    document.getElementById('register-button').disabled = true;
+    document.getElementById('confirm_password').classList.add('is-invalid');
+    document.getElementById('confirm_password').classList.remove('is-valid');
   }
 }
 

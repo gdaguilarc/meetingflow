@@ -15,4 +15,11 @@ async function getUsers() {
   return await User.find({ position: { $ne: 'default' } });
 }
 
-export { getActiveUsers, getUsers };
+/**
+ * @return {Object []}
+ */
+async function getUsersPending() {
+  return User.find({ position: { $ne: 'default' }, isActivated: false });
+}
+
+export { getActiveUsers, getUsers, getUsersPending };

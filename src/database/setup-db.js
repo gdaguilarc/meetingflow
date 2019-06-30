@@ -22,7 +22,7 @@ export function setup() {
       const user = new User();
       user.name = 'No Host';
       user.email = 'default@company.com';
-      user.password = '12345';
+      user.password = user.encryptPassword('12345678');
       user.phone = '000000000000';
       user.position = 'default';
       user.office = 'default';
