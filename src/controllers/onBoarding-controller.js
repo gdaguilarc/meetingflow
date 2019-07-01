@@ -16,7 +16,7 @@ async function updateAppModel(req, done) {
       }
     );
   } else {
-    req.flash('guestRegisterMessage', 'Por favor llena todos los campos');
+    req.flash('onBoardingRegisterMessage', 'Por favor llena todos los campos');
   }
 }
 
