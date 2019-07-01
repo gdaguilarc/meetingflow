@@ -88,6 +88,7 @@ app.use((req, res, next) => {
   app.locals.signUpMessage = req.flash('signupMessage');
   app.locals.signInMessage = req.flash('signinMessage');
   app.locals.guestRegisterMessage = req.flash('guestRegisterMessage');
+  app.locals.onBoardingRegisterMessage = req.flash('onBoardingRegisterMessage');
   app.locals.user = req.user;
   app.locals.roomCreationMessage = req.flash('roomCreationMessage');
   next();
