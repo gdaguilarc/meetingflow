@@ -10,7 +10,7 @@ import express from 'express';
 import guestRoutes from './guest';
 import userRoutes from './user';
 import adminRoutes from './admin';
-import onBoardingRoutes from './OnBoarding/onBoarding';
+import onBoardingRoutes from './OnBoarding';
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
