@@ -5,6 +5,7 @@ import App from '../models/Application-model';
  */
 async function isSetup() {
   const { firstTimeSetup } = await App.findOne();
+
   return firstTimeSetup;
 }
 
