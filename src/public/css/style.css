@@ -145,14 +145,14 @@ a[data-toggle='collapse'] {
 }
 
 /* NAVBAR */
-@import url('https://fonts.googleapis.com/css?family=Yantramanav:400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400');
 
 body {
   margin: 0;
   padding: 0;
   color: #333333;
-  font-family: 'Yantramanav', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .sidebar {
@@ -254,7 +254,7 @@ body {
 }
 
 .logo {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .sidebar a .activity-indicator {
