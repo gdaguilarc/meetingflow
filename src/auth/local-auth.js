@@ -137,10 +137,9 @@ async function signUp(req, email, password, done, authority) {
     if (authority === 'organizationAdmin') {
       newUser.authority = 'Admin';
       newUser.isActivated = true;
-      await newUser.save();
+      const { _id } = await newUser.save();
 
       // Update application
-      const { _id } = await User.findOne({ authority: 'Admin', isActivated: true });
       await App.findOneAndUpdate({}, { organizationAdmin: _id });
     } else {
       await newUser.save();
