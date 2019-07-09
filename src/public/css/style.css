@@ -152,7 +152,7 @@ body {
   margin: 0;
   padding: 0;
   color: #333333;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .sidebar {
@@ -254,7 +254,7 @@ body {
 }
 
 .logo {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .sidebar a .activity-indicator {
@@ -296,7 +296,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   padding: 5%;
   flex-direction: column;
 }
@@ -317,4 +316,13 @@ body {
 .display-table {
   width: 100%;
   height: 100%;
+}
+
+.container-center-horizontal {
+  display: flex;
+  justify-content: space-around;
+}
+
+.expandbody {
+  width: 100%;
 }
