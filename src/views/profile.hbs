@@ -1,0 +1,19 @@
+<h2>
+    Perfil
+</h2>
+
+<hr>
+
+{{#if authorizedEdit }}
+
+
+{{> user-edit-card }}
+
+
+
+
+{{ else }}
+
+{{> user-info-card }}
+
+{{/if}}

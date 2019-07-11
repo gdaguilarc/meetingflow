@@ -1,11 +1,11 @@
 <div class="col-md-8 order-md-1">
   <form method="POST" action="/register-guest">
 
-    <h4 class="mb-3">Guest Registration</h4>
+    <h4 class="mb-3">Registro de Invitados</h4>
 
 
     <div class="mb-3">
-      <label for="name">Nombre </label>
+      <label for="name">Nombre completo</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="Alfredo Pérez">
       <div class="invalid-feedback">
         Please enter a name
@@ -13,7 +13,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="phone">Phone </label>
+      <label for="phone">Teléfono </label>
       <input type="text" class="form-control" id="phone" name="phone" placeholder="+52 1 5575858523">
       <div class="invalid-feedback">
         Please enter a valid phone number
@@ -21,7 +21,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="email">Email </label>
+      <label for="email">Correo Electrónico </label>
       <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
       <div class="invalid-feedback">
         Please enter a valid email address for shipping updates.
@@ -38,7 +38,7 @@
 
 
     <div class="mb-3">
-      <label for="host">Host </label>
+      <label for="host">Anfitrión</label>
       {{> dropdown}}
       <div class="invalid-feedback">
         Please select a valid host.

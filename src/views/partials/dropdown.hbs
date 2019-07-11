@@ -1,6 +1,8 @@
 <select class="selectpicker d-block w-100 show-menu-arrow" title="Choose one of the following..."
     data-live-search="true" id="host" name="host" data-placeholder="Pick your choice" data-tabindex="1" required>
     {{#each users}}
-    <option data-icon="fa fa-heart" value={{ id }}>{{name}} - {{position}}</option>
+    <option data-icon="fa fa-heart" value={{ id }}
+        data-content="<span class='badge badge-info'>{{ name }}</span> <span class='badge badge-success'>{{ position }}</span> <span class='badge badge-warning'>{{ email }}</span> <span class='badge badge-danger'>{{ phone }}</span>">
+    </option>
     {{/each}}
 </select>

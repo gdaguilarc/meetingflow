@@ -1,0 +1,112 @@
+<div class="card">
+    <div class="card-body">
+        <form action="/user/update/{{ user._id }}" method="POST">
+            <h3 class="card-title">{{user.name}}</h3>
+            <br>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Puesto</span>
+                </div>
+                <input type="text" class="form-control" value="{{ user.position }}" name="position"
+                    aria-label="Position" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Teléfono</span>
+                </div>
+                <input type="text" class="form-control" value="{{ user.phone }}" name="phone" aria-label="phone"
+                    aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Email</span>
+                </div>
+                <input type="text" class="form-control" value="{{ user.email }}" name="email" aria-label="email"
+                    aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Oficina</span>
+                </div>
+                <input type="text" class="form-control" value="{{ user.office }}" name="office" aria-label="office"
+                    aria-describedby="basic-addon1">
+            </div>
+            {{#if access }}
+            <!-- Default checked -->
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1"
+                    {{#ifEquals user.authority "Admin"}} checked {{ else }} value="0" {{/ifEquals}}>
+                <label class="custom-control-label" for="customSwitch1">Permisos de Administrador</label>
+            </div>
+            {{/if}}
+
+    </div>
+    <div class="container-center-horizontal">
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#saveChanges">Guardar
+            Cambios</button>
+
+        <!-- Modal Save Changes -->
+        <div class="modal fade" id="saveChanges" tabindex="-1" role="dialog" aria-labelledby="saveChanges"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="saveChangesCenterTitle">Editar Usuario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Seguro que quieres cambiar la información de {{ user.name }}? Recuerda que esta información
+                        sivre de contacto para los otros usuarios . </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    </form>
+    <div class="container-center-horizontal">
+        {{#if access }}
+        <form action="/user/delete/{{ user._id }}" method="POST">
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modalDelete">Eliminar
+                Usuario</button>
+
+
+            <!-- Modal Delete User -->
+            <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalDeleteCenterTitle">Eliminar Usuario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Seguro que quieres eliminar a {{ user.name }}? Si lo haces se perdera solo el usuario pero
+                            no sus registros en la plataforma. Para poder reconocer sus registros guarda este ID:
+                            <b>
+                                {{ user._id }}
+                            </b>.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-danger">Eliminar Usuario</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {{/if}}
+    </div>
+    <br>
+</div>
+
+<script>
+
+</script>
