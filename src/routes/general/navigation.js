@@ -7,7 +7,7 @@ const accessUser = (req, res, next) => accessManager(req, res, next, 'Basic');
 
 // Main route of the home page
 router.get('/home', accessUser, (req, res, next) => {
-  const access = req.user.authority ? 'Admin' : 'Basic';
+  const access = req.user.authority === 'Admin';
   res.render('home', { layout: 'main', access });
 });
 
