@@ -1,3 +1,3 @@
-import routes from './first-time';
+import routesOnBoarding from './onBoarding';
 
-export default routes;
+export default routesOnBoarding;
