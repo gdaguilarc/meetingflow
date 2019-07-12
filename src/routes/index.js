@@ -13,7 +13,7 @@ import adminRoutes from './admin';
 import guestRoutes from './guest';
 import generalRoutes from './general';
 import roomRoutes from './rooms';
-import firstTimeRoutes from './onBoarding';
+import onBoardingRoutes from './onBoarding';
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
