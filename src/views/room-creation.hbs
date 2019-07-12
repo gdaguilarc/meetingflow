@@ -1,0 +1,31 @@
+<div>
+    <form method="POST" action="/createRoom">
+
+        <h4 class="mb-3">Crear Sala</h4>
+
+
+        <div class="mb-3">
+            <label for="name">Nombre </label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Sala de juntas 1" required>
+            <div class="invalid-feedback">
+                Ingresa un nombre.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="host">Ubicación </label>
+            {{> dropdown-locations}}
+            <div class="invalid-feedback">
+                Elige una ubicación.
+            </div>
+        </div>
+
+        <a>¿No encuentras tu ubicación?</a><a href="/new-location"> Crea una.</a>
+        <hr class="mb-4">
+
+        <p class="text-muted">{{ roomCreationMessage }}</p>
+
+        <button class="btn btn-outline-primary btn-lg btn-block" type="submit">Crear</button>
+    </form>
+
+</div>

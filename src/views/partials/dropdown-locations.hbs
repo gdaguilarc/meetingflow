@@ -1,0 +1,6 @@
+<select class="selectpicker d-block w-100 show-menu-arrow" title="Elige una ubicación..." data-live-search="true"
+    id="location" name="location" data-placeholder="Pick your choice" data-tabindex="1" required>
+    {{#each locations}}
+    <option data-icon="fa fa-heart" value={{ _id }}>{{firstLine}} - {{externalNumber}}</option>
+    {{/each}}
+</select>
