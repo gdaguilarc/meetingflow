@@ -14,6 +14,7 @@ import passport from 'passport';
 import flash from 'connect-flash';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import Handlebars from 'handlebars';
 // import favicon from 'serve-favicon';  // Uncomment when favicon exist in public
 
 import indexRoutes from './routes/index';
@@ -38,6 +39,12 @@ require('./auth/local-auth');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'hbs');
+
+Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+  // eslint-disable-next-line no-invalid-this
+  return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+});
+
 app.engine(
   'hbs',
   hbs({

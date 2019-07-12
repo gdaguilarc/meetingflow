@@ -1,12 +1,18 @@
-<div class="card bg-light mb-3" style="max-width: 20rem;">
-    <div class="card-header">{{ name }}</div>
+<div class="card mb-3">
+    <div class="card-header">{{ position }}</div>
     <div class="card-body">
-        <h4 class="card-title">Light card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked={{ isisActivated }}>
-            <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+        <h4 class="card-title">{{ name }}</h4>
+        <p class="card-text"> <b>Email:</b> {{ email }}</p>
+        <p class="card-text"> <b>Teléfono:</b> {{ phone }}</p>
+        <p class="card-text"> <b>Oficina:</b> {{ office }}</p>
+
+        <div class="container-center-horizontal w-100">
+            <form action="user/accept/{{ _id }}" method="POST"><button type="submit"
+                    class="btn btn-success">Aceptar</button></form>
+            <form action="user/delete/{{ _id }}" method="POST">
+                <button type="submit" class="btn btn-danger">Rechazar</button>
+            </form>
         </div>
+
     </div>
 </div>

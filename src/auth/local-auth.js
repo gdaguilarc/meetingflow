@@ -53,7 +53,7 @@ passport.use(
 
 passport.use(
   'local-signin',
-  new LocalStrategy( // <----- TODO: Local Sign In
+  new LocalStrategy(
     {
       usernameField: 'email',
       passwordField: 'password',
@@ -114,7 +114,7 @@ async function signUp(req, email, password, done, authority) {
     newUser.name = req.body.name;
 
     if (isEmail(email)) {
-      newUser.email = email;
+      newUser.email = email.toLowerCase();
     } else {
       console.log(email);
       return done(null, false, req.flash('signupMessage', 'El email no es valido'));

@@ -7,24 +7,19 @@ const router = express.Router();
 const accessAdmin = (req, res, next) => accessManager(req, res, next, 'Admin');
 
 router.get('/notifications', accessAdmin, async (req, res) => {
-  const access = req.user.authority ? 'Admin' : 'Basic';
+  const access = req.user.authority === 'Admin';
 
   const users = await getUsersPending();
-  const halfWayThough = Math.floor(users.length / 2);
-
-  const arrayFirstHalf = users.slice(0, halfWayThough);
-  const arraySecondHalf = users.slice(halfWayThough, users.length);
 
   res.render('users-administration', {
     layout: 'main',
-    users_1: arrayFirstHalf,
-    users_2: arraySecondHalf,
+    users,
     access
   });
 });
 
 router.get('/users', accessAdmin, async (req, res) => {
-  const access = req.user.authority ? 'Admin' : 'Basic';
+  const access = req.user.authority === 'Admin';
   const users = await getActiveUsers();
 
   res.render('users', {

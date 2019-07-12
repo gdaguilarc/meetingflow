@@ -1,15 +1,23 @@
 import express from 'express';
 import passport from 'passport';
+import ApplicationModel from '../../models/Application-model';
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
-router.get('/signup', (req, res) => {
-  res.render('signup', { layout: 'default', template: 'guess-template', method: '/signup' });
+router.get('/signup', async (req, res) => {
+  const { organizationName } = await ApplicationModel.findOne({});
+  res.render('signup', {
+    layout: 'default',
+    template: 'guess-template',
+    method: '/signup',
+    organizationName
+  });
 });
 
-router.get('/signin', (req, res) => {
-  res.render('signin', { layout: 'default', template: 'guess-template' });
+router.get('/signin', async (req, res) => {
+  const { organizationName } = await ApplicationModel.findOne({});
+  res.render('signin', { layout: 'default', template: 'guess-template', organizationName });
 });
 
 router.get('/post', (req, res) => {

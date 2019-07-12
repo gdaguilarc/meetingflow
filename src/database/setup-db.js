@@ -20,11 +20,11 @@ export function setup() {
   mongoose.connection.db.listCollections({ name: 'users' }).next(async function(_err, collinfo) {
     if (!collinfo) {
       const user = new User();
-      user.name = 'No Host';
+      user.name = 'Sin anfitrion';
       user.email = 'default@company.com';
-      user.password = user.encryptPassword('12345678');
+      user.password = user.encryptPassword('12345');
       user.phone = '000000000000';
-      user.position = 'default';
+      user.position = 'Usuario predeterminado';
       user.office = 'default';
       user.isActivated = true;
       await user.save();

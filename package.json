@@ -11,7 +11,8 @@
     "clean": "rimraf dist",
     "build": "babel ./src --out-dir dist",
     "prod": "NODE_ENV=production npm-run-all clean build server:prod",
-    "watch": "nodemon"
+    "watch": "nodemon",
+    "fake": "babel-node ./src/database/db-seed.js"
   },
   "repository": {
     "type": "git",
@@ -63,6 +64,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
+    "faker": "^4.1.0",
     "nodemon": "^1.18.9",
     "prettier": "^1.17.1"
   }
