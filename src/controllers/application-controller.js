@@ -1,5 +1,4 @@
 import App from '../models/Application-model';
-import '../database/connection';
 
 /**
  * @return { Boolean }

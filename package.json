@@ -2,7 +2,7 @@
   "name": "meetingflow",
   "version": "1.0.0",
   "description": "A Web application for schedule meetings and register visitors data in an organization.",
-  "main": "index.js",
+  "main": "./src/bin/www.js",
   "scripts": {
     "start": "npm run prod",
     "server": "babel-node ./src/bin/www",

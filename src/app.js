@@ -26,6 +26,7 @@ const app = express();
 app.use(cors());
 
 require('dotenv').config();
+
 require('./database/connection');
 require('./auth/local-auth');
 
