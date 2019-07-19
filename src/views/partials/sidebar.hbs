@@ -25,7 +25,6 @@
                 </a>
                 <ul>
                     <li><a href="/notifications">Solicitudes</a></li>
-                    <li><a href="#">Permisos</a></li>
                 </ul>
             </li>
             {{/if}}
@@ -63,8 +62,9 @@
             </li>
 
             <li>
-                <a href="#" aria-label="Locness (current user)"><i data-feather="user"></i><span
-                        aria-hidden="true">Perfil Personal<i class="hint" data-feather="chevron-right"></i></span></a>
+                <a href="/user/profile/{{ currentUser.id }}" aria-label="Locness (current user)"><i
+                        data-feather="user"></i><span aria-hidden="true">Perfil Personal<i class="hint"
+                            data-feather="chevron-right"></i></span></a>
             </li>
         </ul>
     </div>
