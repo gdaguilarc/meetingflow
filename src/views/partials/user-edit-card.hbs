@@ -34,7 +34,7 @@
             {{#if access }}
             <!-- Default checked -->
             <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="customSwitch1"
+                <input type="checkbox" class="custom-control-input" name="authority" id="customSwitch1"
                     {{#ifEquals user.authority "Admin"}} checked {{ else }} value="0" {{/ifEquals}}>
                 <label class="custom-control-label" for="customSwitch1">Permisos de Administrador</label>
             </div>
