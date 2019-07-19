@@ -26,6 +26,7 @@ const app = express();
 app.use(cors());
 
 require('dotenv').config();
+
 require('./database/connection');
 require('./auth/local-auth');
 
@@ -96,7 +97,7 @@ app.use((req, res, next) => {
   app.locals.signInMessage = req.flash('signinMessage');
   app.locals.guestRegisterMessage = req.flash('guestRegisterMessage');
   app.locals.onBoardingRegisterMessage = req.flash('onBoardingRegisterMessage');
-  app.locals.user = req.user;
+  app.locals.currentUser = req.user;
   app.locals.roomCreationMessage = req.flash('roomCreationMessage');
   next();
 });

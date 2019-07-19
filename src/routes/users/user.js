@@ -32,4 +32,17 @@ router.get('/user/profile/:id', accessManager, async (req, res, next) => {
   res.render('profile', { layout: 'main', styleClass: 'expandbody', user, access, authorizedEdit });
 });
 
+router.post('/user/update/:id', accessAdmin, async (req, res, next) => {
+  const { position, phone, email, office, authority } = req.body;
+  const variables = {
+    position,
+    phone,
+    email,
+    office,
+    authority
+  };
+  await UserModel.findByIdAndUpdate({ _id: req.params.id }, variables);
+  res.redirect(`/user/profile/${req.params.id}`);
+});
+
 export default router;
