@@ -6,6 +6,7 @@
 
 import debugLib from 'debug';
 import http from 'http';
+import '@babel/polyfill';
 import app from '../app';
 
 const debug = debugLib('meetingflow:server');
