@@ -15,6 +15,8 @@ import flash from 'connect-flash';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import Handlebars from 'handlebars';
+import mongoose from 'mongoose';
+const MongoStore = require('connect-mongo')(session);
 
 // import favicon from 'serve-favicon';  // Uncomment when favicon exist in public
 
@@ -76,13 +78,12 @@ app.enable('trust proxy', 1);
 app.use(
   session({
     secret: process.env.SESSION_KEY,
-    resave: false,
+    resave: true,
     saveUninitialized: true,
-    proxy: true,
     cookie: {
-      secure: true,
-      maxAge: 1000 * 60 * 60 * 24 * 7
-    }
+      maxAge: 19 * 60000
+    },
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
 
