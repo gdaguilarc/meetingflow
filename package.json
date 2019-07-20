@@ -9,8 +9,8 @@
     "server:prod": "node ./dist/bin/www",
     "dev": "NODE_ENV=development npm-run-all server",
     "clean": "rimraf dist",
-    "build": "babel ./src --out-dir dist",
-    "prod": "NODE_ENV=production npm-run-all clean build server:prod",
+    "build": "babel ./src --out-dir dist --source-maps inline --copy-files",
+    "prod": "NODE_ENV=production PORT=8080 npm-run-all clean build server:prod",
     "watch": "nodemon",
     "fake": "babel-node ./src/database/db-seed.js"
   },
