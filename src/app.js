@@ -80,10 +80,15 @@ app.use(
     secret: process.env.SESSION_KEY,
     resave: true,
     saveUninitialized: true,
+    unset: 'destroy',
     cookie: {
       maxAge: 19 * 60000
     },
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      autoRemove: 'interval',
+      autoRemoveInterval: 19
+    })
   })
 );
 
