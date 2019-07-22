@@ -1,4 +1,4 @@
-FROM mongo-express
+FROM node
 
 RUN mkdir -p /usr/src/app
 
