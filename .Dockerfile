@@ -1,4 +1,4 @@
-FROM node:11-alpine
+FROM mongo-express
 
 RUN mkdir -p /usr/src/app
 

@@ -2,8 +2,11 @@ version: '3'
 services:
   web-server:
     image: meetingflow-webapp
-    build: 
-      app:
+    restart: always
+    depends_on:
+      - mongo
+    env_file:
+      - production.env
     build:
       context: .
       dockerfile: .Dockerfile
@@ -11,3 +14,11 @@ services:
       - '8080:8080'
     volumes:
       - ./:/usr/src/app
+    links:
+      - mongo:mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    volumes:
+      - ./data:/data/db
