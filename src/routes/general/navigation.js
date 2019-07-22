@@ -11,4 +11,9 @@ router.get('/home', accessUser, (req, res, next) => {
   res.render('home', { layout: 'main', access });
 });
 
+router.get('/logout', function(req, res) {
+  req.session.destroy();
+  res.redirect('/');
+});
+
 export default router;
