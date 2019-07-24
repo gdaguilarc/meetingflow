@@ -106,6 +106,7 @@ app.use((req, res, next) => {
   app.locals.onBoardingRegisterMessage = req.flash('onBoardingRegisterMessage');
   app.locals.currentUser = req.user;
   app.locals.roomCreationMessage = req.flash('roomCreationMessage');
+  app.locals.locationCreationMessage = req.flash('locationCreationMessage');
   next();
 });
 

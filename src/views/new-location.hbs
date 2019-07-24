@@ -1,0 +1,33 @@
+<div class="order-md-1">
+    <form method="POST" action="/create-location">
+        <div class="mb-3">
+            <label for="street">Calle</label>
+            <input type="text" class="form-control" id="street" placeholder="Ejercito Nacional" name="street" required>
+            <div class="invalid-feedback">
+                Por favor ingresa un nombre válido
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="external">Número exterior</label>
+            <input type="number" class="form-control" id="external" placeholder="531" name="external" required>
+            <div class="invalid-feedback">
+                Por favor ingresa un número válido
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="internal">Número interior (opcional)</label>
+            <input type="number" class="form-control" id="internal" placeholder="3" name="internal">
+            <div class="invalid-feedback">
+                Por favor ingresa un número válido
+            </div>
+        </div>
+
+        <p class="text-muted">{{ locationCreationMessage }}</p>
+
+        <hr class="mb-4">
+        <button id="register-button" class="btn btn-outline-primary btn-lg btn-block" type="submit">Crear
+            Ubicación</button>
+    </form>
+</div>
