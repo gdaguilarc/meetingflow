@@ -1,20 +1,23 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
-  <a class="navbar-brand" href="/">{{ organizationName }}</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Invitados<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/signin">Iniciar Sesión</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/signup">Registrarse</a>
-      </li>
-    </ul>
+<!-- Always shows a header, even in smaller screens. -->
+<header class="mdl-layout__header">
+  <div class="mdl-layout__header-row">
+    <!-- Title -->
+    <span class="mdl-layout-title">{{ organizationName }}</span>
+    <!-- Add spacer, to align navigation to the right -->
+    <div class="mdl-layout-spacer"></div>
+    <!-- Navigation. We hide it in small screens. -->
+    <nav class="mdl-navigation mdl-layout--large-screen-only">
+      <a class="mdl-navigation__link" href="/signin">Iniciar Sesión</a>
+      <a class="mdl-navigation__link" href="/signup">Registro Empleados</a>
+      <a class="mdl-navigation__link" href="/">Invitados de {{ organizationName }}</a>
+    </nav>
   </div>
-</nav>
+</header>
+<div class="mdl-layout__drawer">
+  <span class="mdl-layout-title">{{ organizationName }}</span>
+  <nav class="mdl-navigation">
+    <a class="mdl-navigation__link" href="/signin">Iniciar Sesión</a>
+    <a class="mdl-navigation__link" href="/signup">Registro Empleados</a>
+    <a class="mdl-navigation__link" href="/">Invitados de {{ organizationName }}</a>
+  </nav>
+</div>

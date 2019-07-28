@@ -5,11 +5,11 @@
  */
 function check() {
   if (validPasswords()) {
-    document.getElementById('confirm_password').classList.add('is-valid');
-    document.getElementById('confirm_password').classList.remove('is-invalid');
+    document.getElementById('message_container').classList.add('valid_input');
+    document.getElementById('message_container').classList.remove('invalid_input');
   } else {
-    document.getElementById('confirm_password').classList.add('is-invalid');
-    document.getElementById('confirm_password').classList.remove('is-valid');
+    document.getElementById('message_container').classList.add('invalid_input');
+    document.getElementById('message_container').classList.remove('valid_input');
   }
 }
 

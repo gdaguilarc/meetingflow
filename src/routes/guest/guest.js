@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
   const users = await getActiveUsers();
   const { organizationName } = await ApplicationModel.findOne({});
-  res.render('guests', { layout: 'default', users, organizationName });
+  res.render('externalPages/guests', { layout: 'default', users, organizationName });
 });
 
 router.post('/register-guest', newGuest, (req, res, next) => {

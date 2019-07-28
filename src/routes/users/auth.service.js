@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/signup', async (req, res) => {
   const { organizationName } = await ApplicationModel.findOne({});
-  res.render('signup', {
+  res.render('externalPages/signup', {
     layout: 'default',
     template: 'guess-template',
     method: '/signup',
@@ -17,7 +17,11 @@ router.get('/signup', async (req, res) => {
 
 router.get('/signin', async (req, res) => {
   const { organizationName } = await ApplicationModel.findOne({});
-  res.render('signin', { layout: 'default', template: 'guess-template', organizationName });
+  res.render('externalPages/signin', {
+    layout: 'default',
+    template: 'guess-template',
+    organizationName
+  });
 });
 
 router.get('/post', (req, res) => {

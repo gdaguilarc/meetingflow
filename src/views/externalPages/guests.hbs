@@ -1,0 +1,43 @@
+<div class="demo-card-wide mdl-card mdl-shadow--2dp material_container material_extend">
+  <div class="mdl-card__title material_extend">
+    <h1 class="mdl-card__title-text material_card_title">Registro de Invitados</h1>
+  </div>
+  <div class="mdl-card__supporting-text material_container ">
+    <form method="POST" action="/register-guest" class=" material_extend material_container">
+      {{!-- Name of the guest --}}
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label material_extend material_input">
+        <input class="mdl-textfield__input material_extend" type="text" name="name" id="name">
+        <label class="mdl-textfield__label" for="name">Nombre completo</label>
+      </div>
+      {{!-- Phone of the guest --}}
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label material_extend material_input">
+        <input class="mdl-textfield__input material_extend" type="text" name="phone" id="phone">
+        <label class="mdl-textfield__label" for="phone">Teléfono</label>
+      </div>
+      {{!-- Email of the guest --}}
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label material_extend material_input">
+        <input class="mdl-textfield__input material_extend" type="email" name="email" id="email">
+        <label class="mdl-textfield__label" for="email">Email</label>
+      </div>
+      {{!-- Organization of the guest --}}
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label material_extend material_input">
+        <input class="mdl-textfield__input material_extend" type="text" name="organization" id="organization">
+        <label class="mdl-textfield__label" for="organization">Organización</label>
+      </div>
+      {{!-- Host of the guest --}}
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label material_extend ">
+        <label for="host">Anfitrión</label>
+        {{> dropdown}}
+        <div class="invalid-feedback">
+          Please select a valid host.
+        </div>
+      </div>
+      <div class="mdl-card__actions mdl-card--border material_extend material_input material_container">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+          Registrar Visita
+        </button>
+      </div>
+
+    </form>
+
+  </div>

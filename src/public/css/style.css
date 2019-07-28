@@ -1,6 +1,5 @@
 /* Container */
 .container-body {
-  padding: 7rem 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -325,4 +324,113 @@ body {
 
 .expandbody {
   width: 100%;
+}
+
+/*  MATERIAL DESIGN */
+
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  width: 100vh;
+  min-height: 75px;
+  min-width: 80%;
+  background: #3f51b5;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+  }
+
+  to {
+    margin-left: 0%;
+  }
+}
+
+@media (max-width: 800px) {
+  .demo-card-wide > .mdl-card__title {
+    width: 100%;
+  }
+}
+
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+.material_card_title {
+  font-size: 32px;
+}
+
+.material_input {
+  padding: 28px 0;
+}
+
+.material_input_double_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.material_input_double {
+  margin: 0 5px 0 0;
+}
+
+.material_container {
+  display: flex;
+  animation-duration: 2s;
+  animation-name: slidein;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.material_extend {
+  width: 100%;
+}
+
+.material_dropdown {
+  min-width: 100%;
+}
+
+.material_option {
+  max-width: 80%;
+}
+
+.material_footer {
+  background: rgb(63, 81, 181);
+  max-height: 60px;
+  padding: 16px 16px;
+}
+
+.valid_input {
+  display: none;
+}
+
+.invalid_input {
+  display: flex;
+}
+
+.mdl-components__warning {
+  width: 100%;
+  max-width: 640px;
+  margin: 5px auto;
+  background-color: #fff9c4;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  vertical-align: center;
+  border-radius: 2px;
+  color: #212121;
+}
+
+.mdl-components__warning h6 {
+  margin-bottom: 0;
+  padding: 0.5rem 0;
+  font-weight: 400;
+  color: red;
+}
+
+#material_links {
+  text-decoration-line: none !important;
+  display: flex !important;
+  justify-content: space-between !important;
 }
