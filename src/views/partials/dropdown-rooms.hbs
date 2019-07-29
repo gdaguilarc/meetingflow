@@ -1,0 +1,6 @@
+<select class="selectpicker d-block w-100 show-menu-arrow" title="Elige una sala..." data-live-search="true" id="room"
+    name="room" data-placeholder="Pick your choice" data-tabindex="1" required>
+    {{#each rooms}}
+    <option data-icon="fa fa-heart" value={{ _id }}>{{name}} </option>
+    {{/each}}
+</select>

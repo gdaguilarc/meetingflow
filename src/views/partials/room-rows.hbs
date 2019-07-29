@@ -1,0 +1,31 @@
+{{#if access }}
+{{#each rooms }}
+<tr class="table-light">
+    <td>{{ name }}</td>
+    <td>{{ locationName }}</td>
+    {{#if busy}}
+    <td>Ocupada</td>
+    {{ else }}
+    <td>Disponible</td>
+    {{/if }}
+
+    <td><a href="/rooms/update/{{ _id }}"> <i class="material-icons">create</i></a></td>
+
+</tr>
+{{/each}}
+
+{{ else }}
+{{#each rooms }}
+<tr class="table-light">
+    <td>{{ name }}</td>
+    <td>{{ locationName }}</td>
+    {{#if busy}}
+    <td>Ocupada</td>
+    {{ else }}
+    <td>Disponible</td>
+    {{/if }}
+
+</tr>
+{{/each}}
+
+{{/if}}

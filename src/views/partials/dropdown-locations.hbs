@@ -1,6 +1,14 @@
 <select class="selectpicker d-block w-100 show-menu-arrow" title="Elige una ubicación..." data-live-search="true"
     id="location" name="location" data-placeholder="Pick your choice" data-tabindex="1" required>
+    {{#if currentLocation}}
+    <option data-icon="fa fa-heart" value={{ currentLocation._id }} selected>{{currentLocation.firstLine}} -
+        {{currentLocation.externalNumber}} {{#if currentLocation.internalNumber }}Int.
+        {{ currentLocation.internalNumber }} {{/if }}
+    </option>
+    {{/if}}
     {{#each locations}}
-    <option data-icon="fa fa-heart" value={{ _id }}>{{firstLine}} - {{externalNumber}}</option>
+    <option data-icon="fa fa-heart" value={{ _id }}>{{firstLine}} - {{externalNumber}} {{#if internalNumber }}Int.
+        {{ internalNumber }} {{/if }}
+    </option>
     {{/each}}
 </select>

@@ -1,0 +1,21 @@
+<form action="/reservation/{{ startDate }}/{{ duration }}" method="POST">
+    <div class="card mb-3">
+        <div class="card-header">
+            <h1 class="mb-3">Elige una sala</h1>
+        </div>
+        <div class="card-body">
+
+
+            <div class="mb-3">
+                {{> dropdown-rooms}}
+
+            </div>
+
+            <div class="container-center-horizontal w-100">
+                <button class="btn btn-outline-primary btn-lg btn-block" type="submit"
+                    style="min-width: 121px; max-width: 30%">Reservar</button>
+            </div>
+
+        </div>
+    </div>
+</form>
