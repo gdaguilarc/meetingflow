@@ -32,8 +32,8 @@ function welcomeGuest(guest, company, host, room) {
       <div>
         <h1>Bienvenido ${guest}</h1>
         <h3>Bienvenido a ${company}, estamos muy contentos por su visita!</h3>
-        <h3>${host} en un momento vendra por ti</h3>
-        <h3>Tu junta se llevara a cabo en la sala "${room}"</h3>
+        <h3>${host} vendra por ti en unos momentos </h3>
+        <h3>Tu junta se llevara a cabo en "${room}"</h3>
       </div>
 `;
 }
