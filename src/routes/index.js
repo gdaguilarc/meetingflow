@@ -15,6 +15,7 @@ import generalRoutes from './general';
 import roomRoutes from './rooms';
 import onBoardingRoutes from './onBoarding';
 import locations from './locations';
+import reservations from './reservations';
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
@@ -25,6 +26,7 @@ router.use('/', adminRoutes);
 router.use('/', generalRoutes);
 router.use('/', roomRoutes);
 router.use('/', locations);
+router.use('/', reservations);
 router.use('/setup', onBoardingRoutes);
 
 export default router;
