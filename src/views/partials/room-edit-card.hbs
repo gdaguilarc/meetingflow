@@ -1,0 +1,27 @@
+<form action="/room/update/{{ room._id }}" method="POST">
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2>Editar sala</h2>
+        </div>
+        <div class="card-body">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Nombre</span>
+                </div>
+                <input type="text" class="form-control" value="{{ room.name }}" id="name" name="name"
+                    aria-label="Position" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span id="basic-addon1">Ubicación</span>
+                {{> dropdown-locations}}
+            </div>
+            <p class="text-muted">{{ roomCreationMessage }}</p>
+
+            <div class="container-center-horizontal w-100">
+                <a href="/rooms"><button type="button" class="btn btn-danger">Cancelar</button></a>
+
+                <button type="submit" class="btn btn-success">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+<div class="card-centered">
+
+    <div class="card ">
+        <form action="/reservations/{{ location }}" method="POST">
+            <div class="card-header">
+                <h1 class="mb-3">¿Cuándo se llevará a cabo la reunión?</h1>
+            </div>
+            <div class="card-body">
+
+                <div class="container-center-horizontal" style="padding-bottom: 1rem">
+                    <label for="internal">Elige una fecha y hora</label>
+                    <input type="datetime-local" step="1800" id="meetingTime" name="meetingTime" value={{ minDate }}
+                        min={{ minDate }} required>
+                </div>
+
+                <div class="container-center-horizontal" style="padding-bottom: 1rem">
+                    <label for="internal">¿Cuántas horas?</label>
+                    <input style="width: 30%" type="number" class="form-control" id="time" value="1" name="time"
+                        min="1">
+                </div>
+
+                <div class="container-center-horizontal">
+                    <button class="btn btn-outline-primary btn-lg btn-block" type="submit"
+                        style="min-width: 121px; max-width: 30%">Siguiente</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

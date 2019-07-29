@@ -146,7 +146,13 @@ async function signUp(req, email, password, done, authority) {
     }
 
     // TODO: Finish the sender
-    sendMail(req.body.email, 'Registration', 'Welcome to meetingflow', welcomeUser(req.body.name));
+    const { organizationName } = await App.findOne();
+    sendMail(
+      req.body.email,
+      'Registration',
+      'Welcome to meetingflow',
+      welcomeUser(req.body.name, organizationName)
+    );
 
     done(null, newUser);
   }

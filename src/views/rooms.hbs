@@ -1,0 +1,15 @@
+<table class="table table-hover">
+    <thead>
+        <tr class="table-dark">
+            <th scope="col">Nombre</th>
+            <th scope="col">Ubicación</th>
+            <th scope="col">Status</th>
+            {{#if access}}
+            <th scope="col">Editar</th>
+            {{/if}}
+        </tr>
+
+        {{> room-rows }}
+
+    </thead>
+</table>
