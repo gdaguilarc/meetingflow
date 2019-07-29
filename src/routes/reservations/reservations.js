@@ -19,7 +19,7 @@ const router = express.Router();
 const accessUser = (req, res, next) => accessManager(req, res, next);
 
 router.get('/reservations', accessUser, async (req, res, next) => {
-  const access = req.user.authority ? 'Admin' : 'Basic';
+  const access = req.user.authority === 'Admin';
   const locations = await getLocations();
   res.render('reservation-location', {
     layout: 'main',
@@ -29,7 +29,7 @@ router.get('/reservations', accessUser, async (req, res, next) => {
 });
 
 router.get('/history', accessUser, async (req, res, next) => {
-  const access = req.user.authority ? 'Admin' : 'Basic';
+  const access = req.user.authority === 'Admin';
   const history = await getHistory();
   res.render('history', {
     layout: 'main',
