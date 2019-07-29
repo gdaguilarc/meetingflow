@@ -6,6 +6,13 @@ import reservationModel from '../../models/Reservation-model';
 import RoomModel from '../../models/Room-model';
 import ReservationModel from '../../models/Reservation-model';
 import { getHistory } from '../../controllers/reservation-controller';
+import { sendMail } from '../../controllers/mail-sender';
+import { reservationMade } from '../../misc/mails/mail-templates';
+import UserModel from '../../models/User-model';
+import LocationModel from '../../models/Location-model';
+import ApplicationModel from '../../models/Application-model';
+
+moment.locale('es');
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
@@ -100,6 +107,26 @@ router.post('/reservation/:startDate/:time', async (req, res, next) => {
   newReservation.startTime = startDate;
   newReservation.finalTime = endDate;
   newReservation.save();
+
+  const user = await UserModel.findOne({ _id: req.user._id });
+  const room = await RoomModel.findOne({ _id: req.body.room });
+  const { firstLine } = await LocationModel.findOne({ _id: room.location });
+  const { organizationName } = await ApplicationModel.findOne();
+  sendMail(
+    user.email,
+    'Reservación',
+    'Has reservado una sala',
+    reservationMade(
+      user.name,
+      room.name,
+      firstLine,
+      moment(startDate).format('LL'),
+      moment(startDate).format('LT'),
+      moment(endDate).format('LT'),
+      organizationName
+    )
+  );
+
   res.redirect('/reservations');
 });
 export default router;
