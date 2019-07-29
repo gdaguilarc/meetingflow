@@ -4,6 +4,8 @@ import roomModel from '../models/Room-model';
 import locationModel from '../models/Location-model';
 import moment from 'moment';
 
+moment.locale('es');
+
 /**
  * @return {Object []}
  */
