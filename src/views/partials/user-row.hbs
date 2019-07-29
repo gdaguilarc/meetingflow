@@ -1,8 +1,14 @@
-<tr class="table-light">
-    <td>{{ name }}</td>
-    <td>{{ position }}</td>
-    <td>{{ email }}</td>
-    <td>{{ office }}</td>
-    <td>{{ phone }}</td>
-    <td><a href="/user/profile/{{ _id }}"> <i class="material-icons">create</i></a></td>
+<tr>
+    <td class="mdl-data-table__cell--non-numeric">{{ name }}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{ position }}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{ email }}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{ office }}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{ phone }}</td>
+    <td class="mdl-data-table__cell--non-numeric"><a class="mdl-navigation__link" href="/user/profile/{{ _id }}">
+            <div id="{{ _id }}" class="icon material-icons">edit</div>
+            <div class="mdl-tooltip" for="{{ _id }}">
+                Editar a {{ name }}
+            </div>
+        </a>
+    </td>
 </tr>

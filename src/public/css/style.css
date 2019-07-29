@@ -390,6 +390,13 @@ body {
   min-width: 100%;
 }
 
+.material_container_cards {
+  max-width: 90%;
+}
+.material_card_title {
+  width: 100% !important;
+}
+
 .material_option {
   max-width: 80%;
 }
@@ -433,4 +440,30 @@ body {
   text-decoration-line: none !important;
   display: flex !important;
   justify-content: space-between !important;
+}
+
+.material_header {
+  margin-bottom: 2%;
+}
+
+.material_horizontal_container_card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+
+.material_card {
+  margin: 2%;
+}
+
+.material_dialog {
+  width: 60vh;
+}
+
+.material_button_double {
+  display: block;
+  margin: 2%;
+  float: left;
+  margin-bottom: 1em;
 }

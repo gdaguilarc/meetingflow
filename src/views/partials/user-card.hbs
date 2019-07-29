@@ -1,18 +1,22 @@
-<div class="card mb-3">
-    <div class="card-header">{{ position }}</div>
-    <div class="card-body">
-        <h4 class="card-title">{{ name }}</h4>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp material_card">
+    <div class="mdl-card__title">
+        <h1 class="mdl-card__title-text">{{ name }}</h1>
+    </div>
+    <div class="mdl-card__supporting-text material_container material_extend">
+
         <p class="card-text"> <b>Email:</b> {{ email }}</p>
+        <p class="card-text"> <b>Posición:</b> {{ position }}</p>
         <p class="card-text"> <b>Teléfono:</b> {{ phone }}</p>
         <p class="card-text"> <b>Oficina:</b> {{ office }}</p>
 
-        <div class="container-center-horizontal w-100">
+        <div class="material_horizontal_container_card material_extend">
             <form action="user/accept/{{ _id }}" method="POST"><button type="submit"
-                    class="btn btn-success">Aceptar</button></form>
+                    class="btn btn-success">Aceptar</button>
+            </form>
             <form action="user/delete/{{ _id }}" method="POST">
                 <button type="submit" class="btn btn-danger">Rechazar</button>
             </form>
         </div>
-
     </div>
+
 </div>

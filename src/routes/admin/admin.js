@@ -11,7 +11,7 @@ router.get('/notifications', accessAdmin, async (req, res) => {
 
   const users = await getUsersPending();
 
-  res.render('users-administration', {
+  res.render('user/users-administration', {
     layout: 'main',
     users,
     access
@@ -22,7 +22,7 @@ router.get('/users', accessAdmin, async (req, res) => {
   const access = req.user.authority === 'Admin';
   const users = await getActiveUsers();
 
-  res.render('users', {
+  res.render('user/users', {
     layout: 'main',
     users,
     access,

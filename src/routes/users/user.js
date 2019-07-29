@@ -10,7 +10,7 @@ const router = express.Router();
 router.post('/user/delete/:id', accessAdmin, async (req, res, next) => {
   const _id = req.params.id;
   await UserModel.deleteOne({ _id });
-  res.redirect('/notifications');
+  res.redirect('/users');
 });
 
 router.post('/user/accept/:id', accessAdmin, async (req, res, next) => {
@@ -29,17 +29,24 @@ router.get('/user/profile/:id', accessManager, async (req, res, next) => {
   const user = await UserModel.findOne({ _id: req.params.id });
   const authorizedEdit = req.user._id === req.params.id || access === true;
 
-  res.render('profile', { layout: 'main', styleClass: 'expandbody', user, access, authorizedEdit });
+  res.render('user/profile', {
+    layout: 'main',
+    styleClass: 'expandbody',
+    user,
+    access,
+    authorizedEdit
+  });
 });
 
 router.post('/user/update/:id', accessAdmin, async (req, res, next) => {
   const { position, phone, email, office, authority } = req.body;
+
   const variables = {
     position,
     phone,
     email,
     office,
-    authority
+    authority: authority === '1' ? 'Admin' : 'Basic'
   };
   await UserModel.findByIdAndUpdate({ _id: req.params.id }, variables);
   res.redirect(`/user/profile/${req.params.id}`);

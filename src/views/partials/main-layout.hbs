@@ -1,6 +1,6 @@
 <!-- Always shows a header, even in smaller screens. -->
 
-<header class="mdl-layout__header">
+<header class="mdl-layout__header material_header">
     <div class="mdl-layout__header-row">
         <!-- Title -->
         <span class="mdl-layout-title">Sistema de Apartado e Invitados</span>
@@ -31,13 +31,14 @@
         <a class="mdl-navigation__link" id="material_links" href="">
             Crear Sala <div id="tt1" class="icon material-icons">plus_one</div>
         </a>
-
-        <a class="mdl-navigation__link" id="material_links" href="">
+        {{#if access }}
+        <a class="mdl-navigation__link" id="material_links" href="/users">
             Usuarios <div id="tt1" class="icon material-icons">people</div>
         </a>
-        <a class="mdl-navigation__link" id="material_links" href="">
+        <a class="mdl-navigation__link" id="material_links" href="/notifications">
             Solicitudes <div id="tt1" class="icon material-icons">person_add</div>
         </a>
+        {{/if}}
     </nav>
 
 

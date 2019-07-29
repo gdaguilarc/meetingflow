@@ -1,0 +1,22 @@
+<div class="material_container">
+
+    <div class="material_container_cards">
+        <h2>
+            Perfil de Usuario
+        </h2>
+        <hr>
+        <div class="material_extend material_container">
+
+            {{#if authorizedEdit }}
+
+
+            {{> user-edit-card }}
+
+            {{ else }}
+
+            {{> user-info-card }}
+
+            {{/if}}
+        </div>
+    </div>
+</div>

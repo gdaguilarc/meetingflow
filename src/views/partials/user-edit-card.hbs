@@ -1,112 +1,141 @@
-<div class="card">
-    <div class="card-body">
+<div class="demo-card-wide mdl-card mdl-shadow--2dp material_container material_extend">
+    <div class="mdl-card__title material_card_title">
+        <h1 class="mdl-card__title-text material_card_title">{{ user.name }}</h1>
+    </div>
+    <div class="mdl-card__supporting-text material_container ">
+
+
         <form action="/user/update/{{ user._id }}" method="POST">
-            <h3 class="card-title">{{user.name}}</h3>
-            <br>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Puesto</span>
-                </div>
-                <input type="text" class="form-control" value="{{ user.position }}" name="position"
-                    aria-label="Position" aria-describedby="basic-addon1">
+
+            {{!-- Position of the user --}}
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label material_extend material_input">
+                <input class="mdl-textfield__input material_extend" value="{{ user.position }}" type="text"
+                    name="position" id="position" required>
+                <label class="mdl-textfield__label" for="position">Posición</label>
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Teléfono</span>
-                </div>
-                <input type="text" class="form-control" value="{{ user.phone }}" name="phone" aria-label="phone"
-                    aria-describedby="basic-addon1">
+
+            {{!-- Telephone of the user --}}
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label material_extend material_input">
+                <input class="mdl-textfield__input material_extend" value="{{ user.phone }}" type="text" name="phone"
+                    id="phone" required>
+                <label class="mdl-textfield__label" for="phone">Teléfono</label>
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Email</span>
-                </div>
-                <input type="text" class="form-control" value="{{ user.email }}" name="email" aria-label="email"
-                    aria-describedby="basic-addon1">
+
+            {{!-- Email of the user --}}
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label material_extend material_input">
+                <input class="mdl-textfield__input material_extend" value="{{ user.email }}" type="email" name="email"
+                    id="email" required>
+                <label class="mdl-textfield__label" for="email">Correo Electrónico</label>
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Oficina</span>
-                </div>
-                <input type="text" class="form-control" value="{{ user.office }}" name="office" aria-label="office"
-                    aria-describedby="basic-addon1">
+
+            {{!-- Office of the user --}}
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label material_extend material_input">
+                <input class="mdl-textfield__input material_extend" value="{{ user.office }}" type="text" name="office"
+                    id="office" required>
+                <label class="mdl-textfield__label" for="email">Oficina</label>
             </div>
+
+
             {{#if access }}
             <!-- Default checked -->
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" name="authority" id="customSwitch1"
-                    {{#ifEquals user.authority "Admin"}} checked {{ else }} value="0" {{/ifEquals}}>
-                <label class="custom-control-label" for="customSwitch1">Permisos de Administrador</label>
-            </div>
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+                <input type="checkbox" id="switch-1" name="authority" onclick="changeValue();" class="mdl-switch__input"
+                    {{#ifEquals user.authority "Admin"}} checked value="1" {{ else }} value="0" {{/ifEquals}}>
+                <span class="mdl-switch__label">Permisos de Administrador</span>
+            </label>
             {{/if}}
 
     </div>
-    <div class="container-center-horizontal">
-        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#saveChanges">Guardar
-            Cambios</button>
 
-        <!-- Modal Save Changes -->
-        <div class="modal fade" id="saveChanges" tabindex="-1" role="dialog" aria-labelledby="saveChanges"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="saveChangesCenterTitle">Editar Usuario</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ¿Seguro que quieres cambiar la información de {{ user.name }}? Recuerda que esta información
-                        sivre de contacto para los otros usuarios . </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                    </div>
-                </div>
-            </div>
+
+    <button type="button" id="show-modify"
+        class="mdl-button mdl-js-button mdl-button--raised material_button_double">Guardar
+        Cambios</button>
+
+
+
+    <!-- Modal Modify User -->
+    <dialog class="mdl-dialog material_dialog" id="dialogModify">
+        <h4 class="mdl-dialog__title">¿Quieres eliminar a este usuario?</h4>
+        <div class="mdl-dialog__content">
+            ¿Seguro que quieres cambiar la información de {{ user.name }}? Recuerda que esta información
+            sivre de contacto para los otros usuarios.
         </div>
-    </div>
-    <br>
+        <div class="mdl-dialog__actions">
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">Editar</button>
+            <button type="button" id="close" class="mdl-button mdl-js-button mdl-button--raised">Cancelar</button>
+        </div>
+    </dialog>
+
     </form>
-    <div class="container-center-horizontal">
-        {{#if access }}
-        <form action="/user/delete/{{ user._id }}" method="POST">
-            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#modalDelete">Eliminar
-                Usuario</button>
+    {{#if access }}
+    <form action="/user/delete/{{ user._id }}" method="POST">
+        <button id="show-delete" type="button"
+            class="mdl-button mdl-js-button mdl-button--raised material_button_double">Eliminar
+            Usuario</button>
 
-
-            <!-- Modal Delete User -->
-            <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalDeleteCenterTitle">Eliminar Usuario</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            ¿Seguro que quieres eliminar a {{ user.name }}? Si lo haces se perdera solo el usuario pero
-                            no sus registros en la plataforma. Para poder reconocer sus registros guarda este ID:
-                            <b>
-                                {{ user._id }}
-                            </b>.
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-danger">Eliminar Usuario</button>
-                        </div>
-                    </div>
-                </div>
+        <!-- Modal Delete User -->
+        <dialog class="mdl-dialog material_dialog" id="dialogDelete">
+            <h4 class="mdl-dialog__title">¿Quieres eliminar a este usuario?</h4>
+            <div class="mdl-dialog__content">
+                ¿Seguro que quieres eliminar a {{ user.name }}? Si lo haces se perdera solo el usuario
+                pero
+                no sus registros en la plataforma. Para poder reconocer sus registros guarda este ID:
+                <b>
+                    {{ user._id }}
+                </b>.
             </div>
-        </form>
-        {{/if}}
-    </div>
-    <br>
+            <div class="mdl-dialog__actions">
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">Eliminar</button>
+                <button type="button" id="close" class="mdl-button mdl-js-button mdl-button--raised">Cancelar</button>
+            </div>
+        </dialog>
+
+
+
+    </form>
+    {{/if}}
 </div>
 
+
+
+
 <script>
+    const dialogDelete = document.querySelector('#dialogDelete');
+    const showDialogButtonDelete = document.querySelector('#show-delete');
+    if (!dialogDelete.showModal) {
+        dialogPolyfill.registerDialog(dialogDelete);
+    }
+    showDialogButtonDelete.addEventListener('click', function () {
+        dialogDelete.showModal();
+    });
+    dialogDelete.querySelector('#close').addEventListener('click', function () {
+        dialogDelete.close();
+    });
+
+    const dialogModify = document.querySelector('#dialogModify');
+    const showDialogButtonModify = document.querySelector('#show-modify');
+    if (!dialogModify.showModal) {
+        dialogPolyfill.registerDialog(dialogModify);
+    }
+    showDialogButtonModify.addEventListener('click', function () {
+        dialogModify.showModal();
+    });
+    dialogModify.querySelector('#close').addEventListener('click', function () {
+        dialogModify.close();
+    });
+
+
+    function changeValue() {
+        const checkBox = document.getElementById('switch-1');
+        if (checkBox.getAttribute('value') === '0') {
+            checkBox.setAttribute('value', '1');
+        } else {
+            checkBox.setAttribute('value', '0');
+        }
+    }
+
+
+
 
 </script>
