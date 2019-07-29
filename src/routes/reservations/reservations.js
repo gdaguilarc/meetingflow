@@ -39,7 +39,7 @@ router.get('/history', accessUser, async (req, res, next) => {
 });
 
 router.post('/reservations/location', (req, res, next) => {
-  const access = req.user.authority ? 'Admin' : 'Basic';
+  const access = req.user.authority === 'Admin';
   const location = req.body.location;
   const start = moment();
   const remainder = 30 - (start.minute() % 30);
@@ -56,7 +56,7 @@ router.post('/reservations/location', (req, res, next) => {
 });
 
 router.post('/reservations/:id', async (req, res, next) => {
-  const access = req.user.authority ? 'Admin' : 'Basic';
+  const access = req.user.authority === 'Admin';
   const locationID = req.params.id;
   const startDate = req.body.meetingTime;
   const duration = req.body.time;
