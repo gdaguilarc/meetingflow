@@ -1,5 +1,5 @@
 import express from 'express';
-import { newGuest } from '../../controllers/guest-controller';
+import { newGuest, allGuests, ownGuests } from '../../controllers/guest-controller';
 import { getActiveUsers } from '../../controllers/user-controller';
 import ApplicationModel from '../../models/Application-model';
 
@@ -14,6 +14,16 @@ router.get('/', async (req, res, next) => {
 
 router.post('/register-guest', newGuest, (req, res, next) => {
   res.redirect('/post');
+});
+
+router.get('/guests', async (req, res, next) => {
+  const guests = await allGuests();
+  res.render('guest/guestList', { layout: 'main', guests });
+});
+
+router.get('/myguests', async (req, res, next) => {
+  const guests = await ownGuests(req.user._id);
+  res.render('guest/myGuestList', { layout: 'main', guests });
 });
 
 export default router;

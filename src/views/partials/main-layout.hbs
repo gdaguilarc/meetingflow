@@ -12,11 +12,14 @@
     <span class="mdl-layout-title">Navegación</span>
     <nav class="mdl-navigation">
 
+        <a class="mdl-navigation__link" id="material_links" href="/home">
+            Inicio <div id="tt1" class="icon material-icons">home</div>
+        </a>
 
-        <a class="mdl-navigation__link" id="material_links" href="">
+        <a class="mdl-navigation__link" id="material_links" href="/guests">
             Invitados <div id="tt1" class="icon material-icons">recent_actors</div>
         </a>
-        <a class="mdl-navigation__link" id="material_links" href="">
+        <a class="mdl-navigation__link" id="material_links" href="/myguests">
             Mis Invitados <div id="tt1" class="icon material-icons">portrait</div>
         </a>
         <a class="mdl-navigation__link" id="material_links" href="">
@@ -39,6 +42,17 @@
             Solicitudes <div id="tt1" class="icon material-icons">person_add</div>
         </a>
         {{/if}}
+
+        <a class="mdl-navigation__link" id="material_links" href="/">
+            Preguntas <div id="tt1" class="icon material-icons">feedback</div>
+        </a>
+
+        <a class="mdl-navigation__link" id="material_links" href="/user/profile/{{ currentUser.id }}">
+            Mi Perfil <div id="tt1" class="icon material-icons">person</div>
+        </a>
+        <a class="mdl-navigation__link" id="material_links" href="/logout">
+            Cerrar Sesión <div id="tt1" class="icon material-icons">logout</div>
+        </a>
     </nav>
 
 

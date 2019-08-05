@@ -336,6 +336,34 @@ body {
   background: #3f51b5;
 }
 
+.material_posts {
+  display: flex;
+  height: 450px;
+  animation-duration: 2s;
+  animation-name: slidedown;
+  width: 50%;
+  margin: 2% auto;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.material_simple_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@keyframes slidedown {
+  from {
+    margin-top: 100%;
+  }
+
+  to {
+    margin-top: 2%;
+  }
+}
+
 @keyframes slidein {
   from {
     margin-left: 100%;

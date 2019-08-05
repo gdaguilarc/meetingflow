@@ -6,6 +6,9 @@ import App from '../models/Application-model';
 import { welcomeGuest } from '../misc/mails/mail-templates';
 import { sendMail } from './mail-sender';
 import { getFirstName } from '../misc/tools/strings';
+import moment from 'moment';
+
+moment.locale('es');
 
 /**
  * Writes in the database the new guest
@@ -49,6 +52,44 @@ async function newGuest(req, res, next) {
 }
 
 /**
+ *
+ * @param {string} _id
+ * @return {Array}
+ */
+async function myGuests(_id) {
+  return await Guest.find({
+    host: _id
+  });
+}
+
+/**
+ * Retrieves the list of all the guests
+ */
+async function allGuests() {
+  const guests = await Guest.find();
+  const users = await User.find();
+  const userNames = new Map();
+
+  users.forEach(user => {
+    userNames.set(String(user._doc._id), user._doc.name);
+  });
+
+  let allGuests = [];
+
+  guests.forEach(guest => {
+    allGuests.push({
+      _doc: {
+        ...guest._doc,
+        hostName: userNames.get(String(guest._doc.host))
+      }
+    });
+  });
+
+  allGuests = formatDates(allGuests);
+  return allGuests;
+}
+
+/**
  * Checks if the request has the specified data
  * @param {*} req
  * @return {Boolean}
@@ -76,4 +117,34 @@ function formatPhone(number, regionCode = 'MX') {
   return phone(number, regionCode)[0];
 }
 
-export { newGuest };
+/**
+ *  Formats the date of the own user guests
+ * @param {string} _id
+ * @return {Array}
+ */
+async function ownGuests(_id) {
+  const guests = await myGuests(_id);
+  const formattedDates = formatDates(guests);
+  return formattedDates;
+}
+
+/**
+ * formats the dates of a given array of guests
+ * @param {Array} guests
+ * @return {Array} guests
+ */
+function formatDates(guests) {
+  const formattedGuests = [];
+  guests.forEach(guest => {
+    if (guest._doc) {
+      formattedGuests.push({
+        ...guest._doc,
+        dateFormatted: moment(guest._doc['RegistrationDateTime']).format('MMMM D YYYY, h:mm:ss a')
+      });
+    }
+  });
+
+  return formattedGuests;
+}
+
+export { newGuest, allGuests, ownGuests };
